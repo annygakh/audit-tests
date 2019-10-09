@@ -63,7 +63,9 @@ ls | xargs gunzip
 8. Now add back all skip annotations (i.e. undoing all your earlier changes) and only unskip those that are not in `unexpected_fail`
 
   `cat clean_tests | xargs -L 1 -I F ./unskip.sh "F" [code directory] unexpected_fail`
+
 9. Push to try
+
 10. Repeat steps 6-10 until your unexpected_fail test stops changing
 
 ## Identify tests that are not failing but causing other tests to fail
