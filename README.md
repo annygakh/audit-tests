@@ -29,14 +29,14 @@ for (var i = 0; i < childs.length; i++) {
 }
 ```
 
-- Download the output into file and delete extra text (requires some vim macros). Now we have task links - `task_links.txt`
+- Download the output into file and delete extra text (vim magic - will write a script later). Now we have task links - `task_links.txt`
 ```
 https://tools.taskcluster.net/groups/ZGpoarrNTlC2AnNoz-z-Iw/tasks/EZis_ClyRZi_ufUQDJM7CA/details
 ...
 https://tools.taskcluster.net/groups/ZGpoarrNTlC2AnNoz-z-Iw/tasks/RzJyaS17R_a45bPu5E6SoA/details
 ```
 
-- Construct raw log links from task links (vim magic) - `log_links.txt`
+- Construct raw log links from task links (vim magic - will write a script later) - `log_links.txt`
 ```
 https://taskcluster-artifacts.net/EZis_ClyRZi_ufUQDJM7CA/0/public/logs/live_backing.log
 ...
@@ -66,19 +66,19 @@ ls | xargs gunzip
 
 9. Push to try
 
-10. Repeat steps 6-10 until your unexpected_fail test stops changing
+10. Repeat steps 6-9 until your unexpected_fail test stops changing
 
 ## Identify tests that are not failing but causing other tests to fail
 
-11. At some point you might have test failures that are a side effect from other tests that were running in the test suite. This will need to be dealt with manually. Repeat steps 12-TODO for every try job you have.
+11. At some point you might have test failures that are a side effect from other tests that were running in the test suite. This will need to be dealt with manually. Repeat steps 12-15 for every try job where you have failures.
 
 12. Download raw logs for the try job
 
-12. Extract a list of test pathnames that were run/skipped in a specific try running
+13. Extract a list of test pathnames that were run/skipped in a specific try running
 `grep "TEST-START" logs.log | cut -f 12 -d ' ' | sort -u > tests_run_or_skipped_try_job`
 
-13. Gather a list of `.ini` files that were modified while adding annotations
+14. Gather a list of `.ini` files that were modified while adding annotations
 `git diff --name-only --stat -U1 <commit before you added the skips> <latest commit on the branch that has all your skips>  -- '*.ini'   > ini_files_changed_skips`
 
-14. Gather a list of test files that were skipped by us in an test suite that has other failing tests. Add back annotations for those (manually).
+15. Gather a list of test files that were skipped by us in an test suite that has other failing tests. Add back annotations for those (manually).
 `python3 cross_search_tests.py tests_run_or_skipped_try_job ini_files_changed_skips [repo]`
