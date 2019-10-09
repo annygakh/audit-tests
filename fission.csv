@@ -1,0 +1,913 @@
+,Bug ID,,Test,Opt Status,Debug Status,Owner,Assignee,Fission Target,Comments
+,Core::Audio/Video: Playback,,,,,,,,
+,,dom/media/test/test_access_control.html,dom/media/test/test_access_control.html,passes,passes,drno,jya,M4,
+,,dom/media/test/test_autoplay_policy_activation.html,dom/media/test/test_autoplay_policy_activation.html,fails,fails,drno,jya,M4,Bug 1562264 removed the debug skip-if
+,,toolkit/content/tests/browser/browser_autoplay_policy_iframe_hierarchy.js,toolkit/content/tests/browser/browser_autoplay_policy_iframe_hierarchy.js,fails,fails,drno,jya,M4,
+,,toolkit/content/tests/browser/browser_autoplay_videoDocument.js,toolkit/content/tests/browser/browser_autoplay_videoDocument.js,fails,fails,drno,jya,M4,
+,Core::DOM: Content Processes,,,,,,,,
+1563578,1563578,dom/ipc/tests/JSWindowActor/browser_destroy_callbacks.js,dom/ipc/tests/JSWindowActor/browser_destroy_callbacks.js,passes,passes,jimm/neha,kmag,M4,
+1563578,1563578,dom/ipc/tests/JSWindowActor/browser_event_listener.js,dom/ipc/tests/JSWindowActor/browser_event_listener.js,passes,passes,jimm/neha,kmag,M4,
+1563578,1563578,dom/ipc/tests/JSWindowActor/browser_getActor.js,dom/ipc/tests/JSWindowActor/browser_getActor.js,passes,passes,jimm/neha,kmag,M4,NoSuchWindowException: Browsing context has been discarded
+1563578,1563578,dom/ipc/tests/JSWindowActor/browser_getActor_filter.js,dom/ipc/tests/JSWindowActor/browser_getActor_filter.js,passes,passes,jimm/neha,kmag,M4,
+1563578,1563578,dom/ipc/tests/JSWindowActor/browser_observer_notification.js,dom/ipc/tests/JSWindowActor/browser_observer_notification.js,passes,passes,jimm/neha,kmag,M4,
+1563578,1563578,dom/ipc/tests/JSWindowActor/browser_registerWindowActor.js,dom/ipc/tests/JSWindowActor/browser_registerWindowActor.js,passes,passes,jimm/neha,kmag,M4,
+1563578,1563578,dom/ipc/tests/JSWindowActor/browser_sendAsyncMessage.js,dom/ipc/tests/JSWindowActor/browser_sendAsyncMessage.js,passes,passes,jimm/neha,kmag,M4,
+1563578,1563578,dom/ipc/tests/JSWindowActor/browser_sendQuery.js,dom/ipc/tests/JSWindowActor/browser_sendQuery.js,passes,passes,jimm/neha,kmag,M4,
+1548274,1548274,dom/ipc/tests/browser_cancel_content_js.js,dom/ipc/tests/browser_cancel_content_js.js,fails,fails,jimm/neha,kashav/annyG,M4,Looks like doing BrowserTestUtils.loadURI() then BrowserTestUtils.browserLoaded() does not actually wait until the page loaded.
+,,dom/ipc/tests/browser_crash_oopiframe.js,dom/ipc/tests/browser_crash_oopiframe.js,passes,passes,jimm/neha,,M4,
+,,dom/ipc/tests/browser_domainPolicy.js,dom/ipc/tests/browser_domainPolicy.js,skipped,skipped,jimm/neha,,M4,"This loads some OOP iframes, then checks them for values. Main problem will be understanding this custom test harness code it uses."
+1562029,1562029,dom/ipc/tests/test_force_oop_iframe.html,dom/ipc/tests/test_force_oop_iframe.html,passes,passes,jimm/neha,nika,M4,Crashes: @ RefPtr<mozilla::dom::BrowserBridgeChild>::operator->() const
+,Core::DOM: Core & HTML,,,,,,,,
+,,dom/base/test/browser_aboutnewtab_process_selection.js,dom/base/test/browser_aboutnewtab_process_selection.js,fails,fails,hsinyi/neha,,M4,"Bug 1576995 - This sets ipc.keepProcessesAlive.web, which isn't going to work correctly with Fission."
+,,dom/base/test/browser_bug593387.js,dom/base/test/browser_bug593387.js,skipped,skipped,hsinyi/neha,"SecEng (?)
+",M4,
+,,dom/base/test/browser_messagemanager_unload.js,dom/base/test/browser_messagemanager_unload.js,skipped,skipped,hsinyi/neha,jdai,M∞,"JSWindowActor doesn't support unload, pagehide and pageshow events that leads to the test failure. Next step: to sort out if these three events are needed by front-end."
+1582744,1582744,dom/base/test/browser_use_counters.js,dom/base/test/browser_use_counters.js,passes,passes,hsinyi/neha,edgar,M4,bug 1582744
+,,dom/base/test/test_bug1091883.html,dom/base/test/test_bug1091883.html,skipped,skipped,hsinyi/neha,"SecEng (?)
+",M4,
+1560110,1560110,dom/base/test/test_bug1100912.html,dom/base/test/test_bug1100912.html,passes,passes,hsinyi/neha,farre,M4,
+1562264,1562264,dom/base/test/test_bug326337.html,dom/base/test/test_bug326337.html,passes,passes,hsinyi/neha,kashav,M4,
+,,dom/base/test/test_bug466080.html,dom/base/test/test_bug466080.html,passes,passes,hsinyi/neha,kmag,M4,bug 1580750
+1586772,1586772,dom/base/test/test_bug907892.html,dom/base/test/test_bug907892.html,fails,fails,hsinyi/neha,edgar,M4,
+,,dom/base/test/test_bug976673.html,dom/base/test/test_bug976673.html,skipped,skipped,hsinyi/neha,henri,M4,Times out in weird ways.; likely depends on https://bugzilla.mozilla.org/show_bug.cgi?id=1556627
+,,dom/base/test/test_intersectionobservers.html,dom/base/test/test_intersectionobservers.html,passes,passes,hsinyi/neha,hiro,M4,
+1585932,1585932,dom/base/test/test_postMessages.html,dom/base/test/test_postMessages.html,skipped,skipped,hsinyi/neha,baku (?),M4,
+1586272,1586272,dom/base/test/test_shared_compartment2.html,dom/base/test/test_shared_compartment2.html,passes,passes,hsinyi/neha,jandem,M4,
+,,dom/base/test/test_window_cross_origin_props.html,dom/base/test/test_window_cross_origin_props.html,fails,skipped,hsinyi/neha,henri,M4,Likely depends on https://bugzilla.mozilla.org/show_bug.cgi?id=1556627
+,,dom/base/test/test_x-frame-options.html,dom/base/test/test_x-frame-options.html,fails,fails,hsinyi/neha,SecEng (?),M4,Cross-origin X-Frame-Options
+1575272,1575272,dom/bindings/test/test_bug1036214.html,dom/bindings/test/test_bug1036214.html,passes,passes,hsinyi/neha,mccr8,M4,Landed on 8/22. Needs followup.
+1575272,1575272,dom/bindings/test/test_crossOriginWindowSymbolAccess.html,dom/bindings/test/test_crossOriginWindowSymbolAccess.html,passes,passes,hsinyi/neha,mccr8,M4,Landed on 8/22. Needs followup.
+,,dom/html/test/test_bug1292522_same_domain_with_different_port_number.html,dom/html/test/test_bug1292522_same_domain_with_different_port_number.html,passes,passes,hsinyi/neha,valentin,M4,bug 1580750
+,,dom/html/test/test_bug1295719_event_sequence_for_arrow_keys.html,dom/html/test/test_bug1295719_event_sequence_for_arrow_keys.html,passes,passes,hsinyi/neha,mirko,M4,17th of September: couldn't reproduce the failure on Ubuntu 18.04. Perhaps unskip? Got unskipped in bug 1582531.
+,,dom/html/test/test_bug1295719_event_sequence_for_number_keys.html,dom/html/test/test_bug1295719_event_sequence_for_number_keys.html,passes,passes,hsinyi/neha,mirko,M4,17th of September: couldn't reproduce the failure on Ubuntu 18.04. Perhaps unskip? Got unskipped in bug 1582531.
+,,dom/html/test/test_bug1315146.html,dom/html/test/test_bug1315146.html,passes,passes,hsinyi/neha,mirko,M4,17th of September: couldn't reproduce the failure on Ubuntu 18.04. Perhaps unskip? Got unskipped in bug 1582531.
+,,dom/html/test/test_bug1323815.html,dom/html/test/test_bug1323815.html,passes,passes,hsinyi/neha,henri,M4,Likely depends on bug 1556627. Got unskipped in bug 1582531
+1579820,1579820,dom/html/test/test_bug196523.html,dom/html/test/test_bug196523.html,passes,passes,hsinyi/neha,kmag,M4,
+,,dom/html/test/test_bug209275.xhtml,dom/html/test/test_bug209275.xhtml,passes,passes,hsinyi/neha,jdai (?),M4,Got unskipped in bug 1582531
+,,dom/html/test/test_bug330705-1.html,dom/html/test/test_bug330705-1.html,passes,passes,hsinyi/neha,henri,M4,Likely depends on bug 1556627. Got unskipped in bug 1582531.
+,,dom/html/test/test_bug386496.html,dom/html/test/test_bug386496.html,passes,passes,hsinyi/neha,masayuki,M4,Got unskipped in bug 1582531
+,,dom/html/test/test_bug386996.html,dom/html/test/test_bug386996.html,passes,passes,hsinyi/neha,masayuki,M4,Got unskipped in bug 1582531
+,,dom/html/test/test_bug388558.html,dom/html/test/test_bug388558.html,passes,passes,hsinyi/neha,mirko,M4,Got unskipped in bug 1582531
+,,dom/html/test/test_bug460568.html,dom/html/test/test_bug460568.html,passes,passes,hsinyi/neha,masayuki,M4,Got unskipped in bug 1582531
+,,dom/html/test/test_bug500885.html,dom/html/test/test_bug500885.html,passes,passes,hsinyi/neha,mirko,M4,Got unskipped in bug 1582531
+,,dom/html/test/test_bug592802.html,dom/html/test/test_bug592802.html,passes,passes,hsinyi/neha,mirko,M4,Got unskipped in bug 1582531
+,,dom/html/test/test_bug871161.html,dom/html/test/test_bug871161.html,passes,passes,hsinyi/neha,henri,M4,Encoding (non-)inheritance
+,,dom/html/test/test_filepicker_default_directory.html,dom/html/test/test_filepicker_default_directory.html,passes,passes,hsinyi/neha,mirko,M4,Got unskipped in bug 1582531
+,,dom/html/test/test_input_files_not_nsIFile.html,dom/html/test/test_input_files_not_nsIFile.html,passes,passes,hsinyi/neha,mirko,M4,Got unskipped in bug 1582531
+,,dom/html/test/test_multipleFilePicker.html,dom/html/test/test_multipleFilePicker.html,passes,passes,hsinyi/neha,mirko,M4,Got unskipped in bug 1582531
+,,dom/permission/tests/test_cross_origin_iframe.html,dom/permission/tests/test_cross_origin_iframe.html,skipped,skipped,hsinyi/neha,tnguyen,M4,
+,,dom/tests/browser/browser_bug1004814.js,dom/tests/browser/browser_bug1004814.js,skipped,skipped,hsinyi/neha,,M4,
+,,dom/tests/browser/browser_largeAllocation_non_win32.js,dom/tests/browser/browser_largeAllocation_non_win32.js,skipped,skipped,hsinyi/neha,,M∞,"This will probably be killed soon, not going to fix for fission"
+,,dom/tests/browser/browser_largeAllocation_win32.js,dom/tests/browser/browser_largeAllocation_win32.js,skipped,skipped,hsinyi/neha,,M∞,"This will probably be killed soon, not going to fix for fission"
+,,dom/tests/browser/browser_localStorage_e10s.js,dom/tests/browser/browser_localStorage_e10s.js,fails,fails,jstutte,janv,M4,
+,,dom/tests/browser/browser_localStorage_snapshotting_e10s.js,dom/tests/browser/browser_localStorage_snapshotting_e10s.js,fails,skipped,jstutte,janv,M4,
+,,dom/tests/browser/browser_noopener.js,dom/tests/browser/browser_noopener.js,fails,skipped,hsinyi/neha,neha's team?,M4,
+,,dom/tests/browser/browser_noopener_null_uri.js,dom/tests/browser/browser_noopener_null_uri.js,passes,passes,hsinyi/neha,,M4,
+,,dom/tests/browser/browser_persist_cookies.js,dom/tests/browser/browser_persist_cookies.js,skipped,skipped,hsinyi/neha,SecEng (?),M4,
+1576814,1576814,dom/tests/mochitest/bugs/test_bug1171215.html,dom/tests/mochitest/bugs/test_bug1171215.html,passes,passes,hsinyi/neha,pbone,M4,Bug 1562264 removed the debug skip-if.
+1530413,1530413,dom/tests/mochitest/bugs/test_bug1530292.html,dom/tests/mochitest/bugs/test_bug1530292.html,fails,fails,hsinyi/neha,anny,M4,
+1587386,1587386,dom/tests/mochitest/bugs/test_bug260264.html,dom/tests/mochitest/bugs/test_bug260264.html,skipped,skipped,hsinyi/neha,edgar,M4,
+,,dom/tests/mochitest/bugs/test_bug260264_nested.html,dom/tests/mochitest/bugs/test_bug260264_nested.html,skipped,skipped,hsinyi/neha,edgar,M4,
+,,dom/tests/mochitest/bugs/test_bug265203.html,dom/tests/mochitest/bugs/test_bug265203.html,passes,passes,hsinyi/neha,henri,M4,Likely depends on https://bugzilla.mozilla.org/show_bug.cgi?id=1556627
+,,dom/tests/mochitest/bugs/test_bug346659.html,dom/tests/mochitest/bugs/test_bug346659.html,skipped,skipped,hsinyi/neha,"SecEng (?)
+",M4,
+,,dom/tests/mochitest/bugs/test_bug369306.html,dom/tests/mochitest/bugs/test_bug369306.html,passes,skipped,hsinyi/neha,alchen,M4,
+,,dom/tests/mochitest/bugs/test_bug440572.html,dom/tests/mochitest/bugs/test_bug440572.html,passes,passes,hsinyi/neha,,M4,
+1587013,1587013,dom/tests/mochitest/bugs/test_navigator_buildID.html,dom/tests/mochitest/bugs/test_navigator_buildID.html,skipped,skipped,hsinyi/neha,hsivonen,M4,"Still failed on Oct. 7. It looks like it has a different-domain iframe, so expect it to exercise Fission issues."
+1532994,1532994,dom/tests/mochitest/dom-level0/test_location.html,dom/tests/mochitest/dom-level0/test_location.html,passes,passes,hsinyi/neha,kmag,M4,Bug 1577723 - still failing intermittently on fission
+1532994,1532994,dom/tests/mochitest/dom-level0/test_location_setters.html,dom/tests/mochitest/dom-level0/test_location_setters.html,passes,passes,hsinyi/neha,kmag,M4,
+1576480,1576480,dom/tests/mochitest/dom-level0/test_setting_document.domain_idn.html,dom/tests/mochitest/dom-level0/test_setting_document.domain_idn.html,passes,passes,hsinyi/neha,valentin,M4,"The reason it's failing is that it's doing setTimeout(..., 0) to wait for the postMessage from the iframes. - which will fail under fission. We should properly wait for the message."
+1586779,1586779,dom/tests/mochitest/general/test_interfaces_secureContext.html,dom/tests/mochitest/general/test_interfaces_secureContext.html,skipped,skipped,hsinyi/neha,jdai,M4,Likely becase of bug 1570243?
+1562264,1562264,dom/tests/mochitest/general/test_storagePermissionsAccept.html,dom/tests/mochitest/general/test_storagePermissionsAccept.html,passes,passes,hsinyi/neha,kashav,M4,
+1560110,1560110,dom/tests/mochitest/general/test_storagePermissionsLimitForeign.html,dom/tests/mochitest/general/test_storagePermissionsLimitForeign.html,passes,passes,hsinyi/neha,farre,M4,Bug 1562264 removed the debug skip-if.
+1560110,1560110,dom/tests/mochitest/general/test_storagePermissionsReject.html,dom/tests/mochitest/general/test_storagePermissionsReject.html,passes,passes,hsinyi/neha,farre,M4,
+1560110,1560110,dom/tests/mochitest/general/test_storagePermissionsRejectForeign.html,dom/tests/mochitest/general/test_storagePermissionsRejectForeign.html,passes,passes,hsinyi/neha,farre,M4,
+1586235,1586235,dom/tests/mochitest/general/test_vibrator.html,dom/tests/mochitest/general/test_vibrator.html,skipped,skipped,hsinyi/neha,,M4,because of Crash in [@ mozilla::dom::BrowsingContext::CreateFromIPC]
+1576814,1576814,dom/tests/mochitest/whatwg/test_postMessage.html,dom/tests/mochitest/whatwg/test_postMessage.html,passes,passes,hsinyi/neha,kmag,M4,"Most of the postMessage tests rely on loading cross-origin subframes, which they expect to be loaded by the time the top-level load event fires. They should start working as soon as cross-process iframes start properly blocking the load events of their parents."
+1576814,1576814,dom/tests/mochitest/whatwg/test_postMessage_idn.xhtml,dom/tests/mochitest/whatwg/test_postMessage_idn.xhtml,passes,passes,hsinyi/neha,kmag,M4,
+1576814,1576814,dom/tests/mochitest/whatwg/test_postMessage_joined.html,dom/tests/mochitest/whatwg/test_postMessage_joined.html,passes,passes,hsinyi/neha,kmag,M4,
+1576407,1576407,dom/tests/mochitest/whatwg/test_postMessage_onOther.html,dom/tests/mochitest/whatwg/test_postMessage_onOther.html,passes,passes,hsinyi/neha,kmag,M4,
+1576814,1576814,dom/tests/mochitest/whatwg/test_postMessage_origin.xhtml,dom/tests/mochitest/whatwg/test_postMessage_origin.xhtml,skipped,skipped,hsinyi/neha,kmag,M4,
+1559841,1559841,dom/tests/mochitest/whatwg/test_postMessage_override.html,dom/tests/mochitest/whatwg/test_postMessage_override.html,skipped,skipped,hsinyi/neha,kmag,M4,
+1578636,1578636,dom/tests/mochitest/whatwg/test_postMessage_structured_clone.html,dom/tests/mochitest/whatwg/test_postMessage_structured_clone.html,passes,passes,hsinyi/neha,kmag,M4,Bug 1570918
+1579291,1579291,dom/tests/mochitest/whatwg/test_postMessage_transfer.html,dom/tests/mochitest/whatwg/test_postMessage_transfer.html,passes,passes,hsinyi/neha,kmag,M4,Bug 1571208
+1572575,1572575,dom/tests/mochitest/whatwg/test_postMessage_userpass.html,dom/tests/mochitest/whatwg/test_postMessage_userpass.html,passes,passes,hsinyi/neha,kmag,M4,Bug 1576814
+,,dom/websocket/tests/test_bug1384658.html,dom/websocket/tests/test_bug1384658.html,passes,passes,hsinyi/neha,,M4,
+1579820,1579820,dom/websocket/tests/test_webSocket_sandbox.html,dom/websocket/tests/test_webSocket_sandbox.html,passes,passes,hsinyi/neha,kmag,M4,
+,Core::DOM: Events,,,,,,,,
+1586751,1586751,dom/events/test/test_bug812744.html,dom/events/test/test_bug812744.html,passes,skipped,hsinyi,smaug,M4,"bug 1586751
+"
+,Core::DOM: File,,,,,,,,
+1581004,1581004,dom/file/tests/test_mozfiledataurl.html,dom/file/tests/test_mozfiledataurl.html,skipped,skipped,hsinyi,smaug,M4,bug 1580391
+,Core::DOM: IndexedDB,,,,,,,,
+1586189,1586189,dom/indexedDB/test/browser_forgetThisSite.js,dom/indexedDB/test/browser_forgetThisSite.js,skipped,skipped,jstutte,sg,M4,"This test suffers from a lost message sent cross-process via window.parent.postMessage, issue is not in indexedDB production code."
+1586189,1586189,dom/indexedDB/test/browser_permissionsPromptAllow.js,dom/indexedDB/test/browser_permissionsPromptAllow.js,skipped,skipped,jstutte,sg,M4,"This test suffers from a lost message sent cross-process via window.parent.postMessage, issue is not in indexedDB production code."
+1586189,1586189,dom/indexedDB/test/browser_permissionsPromptDeny.js,dom/indexedDB/test/browser_permissionsPromptDeny.js,skipped,skipped,jstutte,sg,M4,"This test suffers from a lost message sent cross-process via window.parent.postMessage, issue is not in indexedDB production code."
+1586189,1586189,dom/indexedDB/test/browser_permissionsPromptWorker.js,dom/indexedDB/test/browser_permissionsPromptWorker.js,skipped,skipped,jstutte,sg,M4,"This test suffers from a lost message sent cross-process via window.parent.postMessage, issue is not in indexedDB production code."
+1586189,1586189,dom/indexedDB/test/browser_perwindow_privateBrowsing.js,dom/indexedDB/test/browser_perwindow_privateBrowsing.js,skipped,skipped,jstutte,sg,M4,"This test suffers from a lost message sent cross-process via window.parent.postMessage, issue is not in indexedDB production code."
+1586189,1586189,dom/indexedDB/test/test_third_party.html,dom/indexedDB/test/test_third_party.html,fails,fails,jstutte,sg,M4,I am investigating this with pernosco now. Bug 1562264 removed the debug skip-if.
+,Core::DOM: Networking,,,,,,,,
+,,dom/xhr/tests/browser_xhr_onchange_leak.js,dom/xhr/tests/browser_xhr_onchange_leak.js,skipped,skipped,nhi,mccr8,M4,
+,Core::Networking: Cache,,,,,,,,
+,,dom/tests/mochitest/ajax/offline/browser_disableAppcache.js,dom/tests/mochitest/ajax/offline/browser_disableAppcache.js,passes,passes,nhi,,M4,
+,Core::DOM: Push Notifications,,,,,,,,
+1575185,1575185,dom/push/test/test_permissions.html,dom/push/test/test_permissions.html,passes,passes,jstutte,pjiang,M4,Resolved; tracked by https://bugzilla.mozilla.org/show_bug.cgi?id=1575185
+,,dom/push/test/test_serviceworker_lifetime.html,dom/push/test/test_serviceworker_lifetime.html,fails,fails,jstutte,pjiang,M4,Tracked by https://bugzilla.mozilla.org/show_bug.cgi?id=1578333
+,,dom/push/test/test_subscription_change.html,dom/push/test/test_subscription_change.html,passes,passes,jstutte,,M4,"[mccr8] seems to pass locally, maybe can be re-enabled? Got unskipped in bug 1582531"
+,Core::DOM: Quota Manager,,,,,,,,
+1586190,1586190,dom/quota/test/browser_permissionsPromptAllow.js,dom/quota/test/browser_permissionsPromptAllow.js,skipped,skipped,jstutte,sg,M4,"This test suffers from a lost message sent cross-process via window.parent.postMessage, issue is not in quota production code."
+1586190,1586190,dom/quota/test/browser_permissionsPromptDeny.js,dom/quota/test/browser_permissionsPromptDeny.js,skipped,skipped,jstutte,sg,M4,"This test suffers from a lost message sent cross-process via window.parent.postMessage, issue is not in quota production code."
+1586190,1586190,dom/quota/test/browser_permissionsPromptUnknown.js,dom/quota/test/browser_permissionsPromptUnknown.js,skipped,skipped,jstutte,sg,M4,"This test suffers from a lost message sent cross-process via window.parent.postMessage, issue is not in quota production code."
+,Core::DOM: SVG,,,,,,,,
+1574137,1574137,layout/svg/tests/test_filter_crossorigin.html,layout/svg/tests/test_filter_crossorigin.html,passes,passes,svoisen,jwatt,M4,
+,Core::DOM: Security,,,,,,,,
+,,browser/components/contextualidentity/test/browser/browser_serviceworkers.js,browser/components/contextualidentity/test/browser/browser_serviceworkers.js,skipped,skipped,ckerschb,,M4,
+,,browser/components/originattributes/test/browser/browser_blobURLIsolation.js,browser/components/originattributes/test/browser/browser_blobURLIsolation.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_broadcastChannel.js,browser/components/originattributes/test/browser/browser_broadcastChannel.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_cache.js,browser/components/originattributes/test/browser/browser_cache.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_cacheAPI.js,browser/components/originattributes/test/browser/browser_cacheAPI.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_cookieIsolation.js,browser/components/originattributes/test/browser/browser_cookieIsolation.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_favicon_firstParty.js,browser/components/originattributes/test/browser/browser_favicon_firstParty.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_favicon_userContextId.js,browser/components/originattributes/test/browser/browser_favicon_userContextId.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_firstPartyIsolation.js,browser/components/originattributes/test/browser/browser_firstPartyIsolation.js,skipped,skipped,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_firstPartyIsolation_aboutPages.js,browser/components/originattributes/test/browser/browser_firstPartyIsolation_aboutPages.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_firstPartyIsolation_about_newtab.js,browser/components/originattributes/test/browser/browser_firstPartyIsolation_about_newtab.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_firstPartyIsolation_blobURI.js,browser/components/originattributes/test/browser/browser_firstPartyIsolation_blobURI.js,skipped,skipped,ckerschb,timhuang,M4,"Crashes: @ mozilla::dom::BrowserBridgeParent::RecvShow(mozilla::gfx::IntSizeTyped<mozilla::ScreenPixel> const&, bool const&, nsSizeMode const&)"
+,,browser/components/originattributes/test/browser/browser_firstPartyIsolation_js_uri.js,browser/components/originattributes/test/browser/browser_firstPartyIsolation_js_uri.js,skipped,skipped,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_firstPartyIsolation_saveAs.js,browser/components/originattributes/test/browser/browser_firstPartyIsolation_saveAs.js,skipped,skipped,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_httpauth.js,browser/components/originattributes/test/browser/browser_httpauth.js,skipped,skipped,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_localStorageIsolation.js,browser/components/originattributes/test/browser/browser_localStorageIsolation.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_permissions.js,browser/components/originattributes/test/browser/browser_permissions.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_postMessage.js,browser/components/originattributes/test/browser/browser_postMessage.js,skipped,skipped,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_sanitize.js,browser/components/originattributes/test/browser/browser_sanitize.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_sharedworker.js,browser/components/originattributes/test/browser/browser_sharedworker.js,fails,fails,ckerschb,timhuang,M4,
+,,browser/components/originattributes/test/browser/browser_windowOpenerRestriction.js,browser/components/originattributes/test/browser/browser_windowOpenerRestriction.js,fails,fails,ckerschb,timhuang,M4,
+,,dom/security/test/csp/test_frameancestors.html,dom/security/test/csp/test_frameancestors.html,skipped,skipped,ckerschb,ckershb,M4,
+,,dom/security/test/csp/test_frameancestors_userpass.html,dom/security/test/csp/test_frameancestors_userpass.html,skipped,skipped,ckerschb,ckershb,M4,
+,,dom/security/test/csp/test_navigate_to.html,dom/security/test/csp/test_navigate_to.html,skipped,skipped,ckerschb,,M4,
+,,dom/security/test/csp/test_reloadInFreshProcess.html,dom/security/test/csp/test_reloadInFreshProcess.html,skipped,skipped,ckerschb,ckershb,M4,"Crashes: @ mozilla::dom::ContentParent::CommonCreateWindow(mozilla::dom::PBrowserParent*, bool, unsigned int const&, bool const&, bool const&, bool const&, nsIURI*, nsTString<char> const&, float const&, unsigned long, nsTString<char16_t> const&, nsresult&, nsCOMPtr<nsIRemoteTab>&, bool*, int&, nsIPrincipal*, nsIReferrerInfo*, bool, nsIContentSecurityPolicy*)"
+,,dom/security/test/csp/test_uir_top_nav.html,dom/security/test/csp/test_uir_top_nav.html,passes,passes,ckerschb,ckershb,M4,"Crashes: @ mozilla::dom::ContentParent::CommonCreateWindow(mozilla::dom::PBrowserParent*, bool, unsigned int const&, bool const&, bool const&, bool const&, nsIURI*, nsTString<char> const&, float const&, unsigned long, nsTString<char16_t> const&, nsresult&, nsCOMPtr<nsIRemoteTab>&, bool*, int&, nsIPrincipal*, nsIReferrerInfo*, bool, nsIContentSecurityPolicy*)"
+,,dom/security/test/csp/test_uir_windowwatcher.html,dom/security/test/csp/test_uir_windowwatcher.html,passes,passes,ckerschb,ckershb,M4,"Crashes: @ mozilla::dom::ContentParent::CommonCreateWindow(mozilla::dom::PBrowserParent*, bool, unsigned int const&, bool const&, bool const&, bool const&, nsIURI*, nsTString<char> const&, float const&, unsigned long, nsTString<char16_t> const&, nsresult&, nsCOMPtr<nsIRemoteTab>&, bool*, int&, nsIPrincipal*, nsIReferrerInfo*, bool, nsIContentSecurityPolicy*)"
+,,dom/security/test/csp/test_upgrade_insecure.html,dom/security/test/csp/test_upgrade_insecure.html,passes,passes,ckerschb,ckershb,M4,Passes since Bug 1584992
+,,dom/security/test/csp/test_upgrade_insecure_navigation.html,dom/security/test/csp/test_upgrade_insecure_navigation.html,passes,passes,ckerschb,ckershb,M4,Passes since Bug 1584992
+,,dom/security/test/general/browser_test_FTP_console_warning.js,dom/security/test/general/browser_test_FTP_console_warning.js,fails,fails,ckerschb,,M4,
+,,dom/security/test/general/browser_test_referrer_loadInOtherProcess.js,dom/security/test/general/browser_test_referrer_loadInOtherProcess.js,skipped,skipped,ckerschb,,M4,Times out
+1582247,1582247,dom/security/test/general/test_cache_split.html,dom/security/test/general/test_cache_split.html,skipped,skipped,ckerschb,,M4,
+,,dom/security/test/general/test_same_site_cookies_about.html,dom/security/test/general/test_same_site_cookies_about.html,skipped,skipped,ckerschb,,M4,Fails intermittently under Fission
+,,dom/security/test/general/test_same_site_cookies_iframe.html,dom/security/test/general/test_same_site_cookies_iframe.html,skipped,skipped,ckerschb,,M4,Fails intermittently under Fission
+,,dom/security/test/general/test_same_site_cookies_laxByDefault.html,dom/security/test/general/test_same_site_cookies_laxByDefault.html,passes,skipped,ckerschb,,M4,
+,,dom/security/test/general/test_same_site_cookies_toplevel_nav.html,dom/security/test/general/test_same_site_cookies_toplevel_nav.html,passes,skipped,ckerschb,,M4,"Crashes: @ mozilla::dom::ContentParent::CommonCreateWindow(mozilla::dom::PBrowserParent*, bool, unsigned int const&, bool const&, bool const&, bool const&, nsIURI*, nsTString<char> const&, float const&, unsigned long, nsTString<char16_t> const&, nsresult&, nsCOMPtr<nsIRemoteTab>&, bool*, int&, nsIPrincipal*, nsIReferrerInfo*, bool, nsIContentSecurityPolicy*)"
+,,dom/security/test/general/test_same_site_cookies_toplevel_set_cookie.html,dom/security/test/general/test_same_site_cookies_toplevel_set_cookie.html,passes,passes,ckerschb,,M4,Got unskipped in bug 1582531
+,,dom/security/test/mixedcontentblocker/test_frameNavigation.html,dom/security/test/mixedcontentblocker/test_frameNavigation.html,skipped,skipped,ckerschb,jkt,M4,
+1560110,1560110,dom/security/test/mixedcontentblocker/test_main.html,dom/security/test/mixedcontentblocker/test_main.html,skipped,skipped,ckerschb,jkt,M4,Crashes: @ mozilla::dom::BrowsingContextGroup::EnsureSubscribed(mozilla::dom::ContentParent*)
+,Core::DOM: Service Workers,,,,,,,,
+,,dom/serviceworkers/test/browser_antitracking_subiframes.js,dom/serviceworkers/test/browser_antitracking_subiframes.js,passes,passes,jstutte,echuang,M4,Pass when fission on both in sw-e10s and non-sw-e10s. Got unskipped in bug 1582531
+1581477,1581477,dom/serviceworkers/test/browser_devtools_serviceworker_interception.js,dom/serviceworkers/test/browser_devtools_serviceworker_interception.js,passes,skipped,jstutte,echuang,M4,"Could not reproduce in local
+Crashes: @ mozilla::dom::ServiceWorkerManagerService::PropagateUnregister"
+1581477,1581477,dom/serviceworkers/test/browser_download.js,dom/serviceworkers/test/browser_download.js,passes,passes,jstutte,echuang,M4,"Could not reproduce in local
+Crashes: @ mozilla::dom::ServiceWorkerManagerService::PropagateUnregister. Got unskipped in bug 1582531."
+1581477,1581477,dom/serviceworkers/test/browser_download_canceled.js,dom/serviceworkers/test/browser_download_canceled.js,passes,passes,jstutte,echuang,M4,"Could not reproduce in local
+Crashes: @ mozilla::dom::ServiceWorkerManagerService::PropagateUnregister"
+1581499,1581499,dom/serviceworkers/test/browser_force_refresh.js,dom/serviceworkers/test/browser_force_refresh.js,skipped,skipped,jstutte,echuang,M4,"Test timeout since event handler does not receive the expected event.
+Events are dispatched in browser_base_force_refresh.html, but the registered event handler(frameScript) in browser_force_refresh.js doesn't received as expected.
+According to https://docs.google.com/presentation/d/1equyaJTujM4xF-ucoMZiLE-lo0lbHKFMliUfPE4_1B8/edit#slide=id.g5bf3b21fbb_0_265, test might need to replace LoadFrameScript by JSWindowActors"
+1570942,1570942,dom/serviceworkers/test/browser_storage_permission.js,dom/serviceworkers/test/browser_storage_permission.js,passes,passes,jstutte,echuang,M4,"Could not reproduce in local
+Crashes: @ mozilla::dom::ServiceWorkerManagerService::PropagateUnregister"
+,,dom/serviceworkers/test/browser_storage_recovery.js,dom/serviceworkers/test/browser_storage_recovery.js,skipped,skipped,jstutte,echuang,M4,Maybe replace ContentTask.spwan to SpecialPowers.spwan.
+1581477,1581477,dom/serviceworkers/test/browser_unregister_with_containers.js,dom/serviceworkers/test/browser_unregister_with_containers.js,passes,passes,jstutte,echuang,M4,"Could not reproduce in local
+Crashes: @ mozilla::dom::ServiceWorkerManagerService::PropagateUnregister"
+1581477,1581477,dom/serviceworkers/test/browser_userContextId_openWindow.js,dom/serviceworkers/test/browser_userContextId_openWindow.js,passes,passes,jstutte,echuang,M4,"Could not reproduce in local
+Crashes: @ mozilla::dom::ServiceWorkerManagerService::PropagateUnregister"
+1581477,1581477,dom/serviceworkers/test/test_cookie_fetch.html,dom/serviceworkers/test/test_cookie_fetch.html,skipped,skipped,jstutte,echuang,M4,"The iframe is removed after ServiceWorker registration, and it triggers the active ServiceWorker shutdown. A fetch event is sent to shutting down ServiceWorker.
+If removing the line iframe.remove(), the test passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s mode."
+1581477,1581477,dom/serviceworkers/test/test_csp_upgrade-insecure_intercept.html,dom/serviceworkers/test/test_csp_upgrade-insecure_intercept.html,skipped,skipped,jstutte,echuang,M4,"Passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s."
+1561706,1561706,dom/serviceworkers/test/test_eventsource_intercept.html,dom/serviceworkers/test/test_eventsource_intercept.html,skipped,skipped,jstutte,echuang,M4,The ClientInfo saved in loadInfo is not propagated when process switching. Use incorrect ClientId while searching in ServiceWorkerManager::mControledClients.
+1581477,1581477,dom/serviceworkers/test/test_hsts_upgrade_intercept.html,dom/serviceworkers/test/test_hsts_upgrade_intercept.html,skipped,skipped,jstutte,echuang,M4,"Passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s."
+1581477,1581477,dom/serviceworkers/test/test_https_fetch.html,dom/serviceworkers/test/test_https_fetch.html,skipped,skipped,jstutte,echuang,M4,"Passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s."
+1581477,1581477,dom/serviceworkers/test/test_https_fetch_cloned_response.html,dom/serviceworkers/test/test_https_fetch_cloned_response.html,skipped,skipped,jstutte,echuang,M4,"Passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s."
+1581072,1581072,dom/serviceworkers/test/test_https_origin_after_redirect.html,dom/serviceworkers/test/test_https_origin_after_redirect.html,skipped,skipped,jstutte,echuang,M4,"The known issue for window.open(). Bug 1542415
+Passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s."
+1581072,1581072,dom/serviceworkers/test/test_https_origin_after_redirect_cached.html,dom/serviceworkers/test/test_https_origin_after_redirect_cached.html,skipped,skipped,jstutte,echuang,M4,"The known issue for window.open(). Bug 1542415
+Passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s."
+1581477,1581477,dom/serviceworkers/test/test_https_synth_fetch_from_cached_sw.html,dom/serviceworkers/test/test_https_synth_fetch_from_cached_sw.html,skipped,skipped,jstutte,echuang,M4,Passes with sw-e10s mode. Fails while loading /tests/dom/serviceworkers/test/fetch/https/synth.html. Got 404 was not found. 
+,,dom/serviceworkers/test/test_importscript.html,dom/serviceworkers/test/test_importscript.html,passes,passes,jstutte,echuang,M4,Pass when fission on both in sw-e10s and non-sw-e10s
+1581477,1581477,dom/serviceworkers/test/test_importscript_mixedcontent.html,dom/serviceworkers/test/test_importscript_mixedcontent.html,skipped,skipped,jstutte,echuang,M4,"Passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s."
+1522649,1522649,dom/serviceworkers/test/test_openWindow.html,dom/serviceworkers/test/test_openWindow.html,skipped,skipped,jstutte,echuang,M4,
+1581072,1581072,dom/serviceworkers/test/test_origin_after_redirect.html,dom/serviceworkers/test/test_origin_after_redirect.html,passes,passes,jstutte,echuang,M4,The known issue for window.open(). Bug 1542415
+1581072,1581072,dom/serviceworkers/test/test_origin_after_redirect_cached.html,dom/serviceworkers/test/test_origin_after_redirect_cached.html,passes,passes,jstutte,echuang,M4,The known issue for window.open(). Bug 1542415
+1581072,1581072,dom/serviceworkers/test/test_origin_after_redirect_to_https.html,dom/serviceworkers/test/test_origin_after_redirect_to_https.html,passes,passes,jstutte,echuang,M4,The known issue for window.open(). Bug 1542415
+1581072,1581072,dom/serviceworkers/test/test_origin_after_redirect_to_https_cached.html,dom/serviceworkers/test/test_origin_after_redirect_to_https_cached.html,passes,passes,jstutte,echuang,M4,"The known issue for window.open(). Bug 1542415
+"
+,,dom/serviceworkers/test/test_register_https_in_http.html,dom/serviceworkers/test/test_register_https_in_http.html,fails,fails,jstutte,"echuang
+",M4,"Root cause is DOMJSClass.h IsSecureContextOrObjectIsFromSecureContext returns true when Fission on, but expecting false. The test creates an https iframe from an http page, and when fission on, these page content are loaded in different processes. ServiceWorker API uses IsSecureContextOrObjectIsFromSecureContext to check all things are in Secure Context, but it seems not to work in fission environment. Probably all APIs use IsSecureContextOrObjectIsFromSecureContext have the same problem. Bug 1570243 ?"
+1561706,1561706,dom/serviceworkers/test/test_sanitize_domain.html,dom/serviceworkers/test/test_sanitize_domain.html,skipped,skipped,jstutte,echuang,M4,The ClientInfo saved in loadInfo is not propagated when process switching. Use incorrect ClientId while searching in ServiceWorkerManager::mControledClients.
+1581477,1581477,dom/serviceworkers/test/test_third_party_iframes.html,dom/serviceworkers/test/test_third_party_iframes.html,skipped,skipped,jstutte,echuang,M4,"Passes with sw-e10s mode, but lefts a service worker without clean it up in non-sw-e10s."
+,Core::DOM: Web Storage,,,,,,,,
+,,dom/tests/mochitest/localstorage/test_localStorageCookieSettings.html,dom/tests/mochitest/localstorage/test_localStorageCookieSettings.html,passes,passes,jstutte,,M4,"Assertion failure: browsingContext == browserParent->GetBrowsingContext(), at /media/ssd/mc/dom/ipc/WindowGlobalParent.cpp:367"
+,,dom/tests/mochitest/localstorage/test_keySync.html,dom/tests/mochitest/localstorage/test_keySync.html,fails,fails,jstutte,janv,M4,Some of these tests were redisabled in bug 1576814.
+1576233,1576233,dom/tests/mochitest/localstorage/test_localStorageOriginsDiff.html,dom/tests/mochitest/localstorage/test_localStorageOriginsDiff.html,fails,fails,jstutte,janv,M4,Some of these tests were redisabled in bug 1576814.
+1576233,1576233,dom/tests/mochitest/localstorage/test_localStorageOriginsDomainDiffs.html,dom/tests/mochitest/localstorage/test_localStorageOriginsDomainDiffs.html,fails,fails,jstutte,janv,M4,Some of these tests were redisabled in bug 1576814.
+1576233,1576233,dom/tests/mochitest/localstorage/test_localStorageOriginsEquals.html,dom/tests/mochitest/localstorage/test_localStorageOriginsEquals.html,fails,fails,jstutte,janv,M4,Some of these tests were redisabled in bug 1576814.
+1576233,1576233,dom/tests/mochitest/localstorage/test_localStorageOriginsPortDiffs.html,dom/tests/mochitest/localstorage/test_localStorageOriginsPortDiffs.html,fails,fails,jstutte,janv,M4,Some of these tests were redisabled in bug 1576814.
+1576233,1576233,dom/tests/mochitest/localstorage/test_localStorageOriginsSchemaDiffs.html,dom/tests/mochitest/localstorage/test_localStorageOriginsSchemaDiffs.html,fails,fails,jstutte,janv,M4,Some of these tests were redisabled in bug 1576814.
+1532994,1532994,dom/tests/mochitest/localstorage/test_localStorageQuota.html,dom/tests/mochitest/localstorage/test_localStorageQuota.html,passes,passes,jstutte,kmag,M4,"Bug 1532994. Sets location on frame to make it go OOP, then sets it again which causes NS_ERROR_FAILURE.
+"
+1576407,1576407,dom/tests/mochitest/localstorage/test_localStorageReplace.html,dom/tests/mochitest/localstorage/test_localStorageReplace.html,passes,passes,jstutte,kmag,M4,"Bug 1532994 and bug 1576407. Sets location on frame to make it go OOP, then sets it again which causes NS_ERROR_FAILURE.
+"
+1576407,1576407,dom/tests/mochitest/sessionstorage/test_sessionStorageClone.html,dom/tests/mochitest/sessionstorage/test_sessionStorageClone.html,passes,passes,jstutte,kmag,M4,Bug 1576407: TypeError: opener is null after a window.open() of an OOP URL
+,,dom/tests/mochitest/sessionstorage/test_sessionStorageReplace.html,dom/tests/mochitest/sessionstorage/test_sessionStorageReplace.html,fails,fails,jstutte,janv,M4,"Bug 1532994? Sets location on frame to make it go OOP, which causes NS_ERROR_FAILURE."
+1576288,1576288,dom/tests/mochitest/storageevent/test_storageLocalStorageEventCheckNoPropagation.html,dom/tests/mochitest/storageevent/test_storageLocalStorageEventCheckNoPropagation.html,passes,passes,jstutte,mccr8,M4,"These storageevent tests use special powers to get the URL of their parent, which doesn't work cross-origin. Instead they can be hardcoded, more or less."
+1576288,1576288,dom/tests/mochitest/storageevent/test_storageLocalStorageEventCheckPropagation.html,dom/tests/mochitest/storageevent/test_storageLocalStorageEventCheckPropagation.html,passes,passes,jstutte,mccr8,M4,
+1582948,1582948,dom/tests/mochitest/storageevent/test_storageSessionStorageEventCheckNoPropagation.html,dom/tests/mochitest/storageevent/test_storageSessionStorageEventCheckNoPropagation.html,skipped,skipped,jstutte,kmag,M4,Racy test. Previously enabled in bug 1576288. Got re-skipped in bug 1582948.
+1576288,1576288,dom/tests/mochitest/storageevent/test_storageSessionStorageEventCheckPropagation.html,dom/tests/mochitest/storageevent/test_storageSessionStorageEventCheckPropagation.html,passes,passes,jstutte,mccr8,M4,
+,Core::DOM: Workers,,,,,,,,
+,,dom/workers/test/test_multi_sharedWorker.html,dom/workers/test/test_multi_sharedWorker.html,passes,skipped,jstutte,asuth,M4,
+,,dom/workers/test/test_sharedWorker_thirdparty.html,dom/workers/test/test_sharedWorker_thirdparty.html,fails,fails,jstutte,asuth,M4,
+,Core::Document Navigation,,,,,,,,
+1578393,1578393,docshell/test/browser/browser_browsingContext-02.js,docshell/test/browser/browser_browsingContext-02.js,passes,passes,neha,farre,M4,Cross-process postMessage
+1578393,1578393,docshell/test/browser/browser_browsingContext-03.js,docshell/test/browser/browser_browsingContext-03.js,skipped,skipped,neha,farre,M4,Cross-process postMessage. This test will be gone with tabGroup removal.
+,,docshell/test/browser/browser_bug420605.js,docshell/test/browser/browser_bug420605.js,skipped,skipped,neha,kashav,M4,BrowserTestUtils.waitForContentEvent
+,,docshell/test/browser/browser_bug422543.js,docshell/test/browser/browser_bug422543.js,skipped,skipped,neha,kashav probably,M4,Uses its own broken version of waitForContentEvent
+,,docshell/test/browser/browser_bug670318.js,docshell/test/browser/browser_bug670318.js,skipped,skipped,neha,,M5,"Adds session history listener in the content process, then does cross-process navigation."
+,,docshell/test/browser/browser_cross_process_csp_inheritance.js,docshell/test/browser/browser_cross_process_csp_inheritance.js,fails,fails,neha,,M4,Could be fixed by https://phabricator.services.mozilla.com/D47355 ? jya to confirm.
+,,docshell/test/browser/browser_onbeforeunload_navigation.js,docshell/test/browser/browser_onbeforeunload_navigation.js,skipped,skipped,neha,,M4,Does cross-origin navigations from a content task
+,,docshell/test/browser/browser_uriFixupAlternateRedirects.js,docshell/test/browser/browser_uriFixupAlternateRedirects.js,skipped,skipped,neha,,M4,BrowserTestUtils.waitForErrorPage
+1586119,1586119,docshell/test/mochitest/test_bug529119-1.html,docshell/test/mochitest/test_bug529119-1.html,skipped,skipped,neha,kmag,M4,
+1586119,1586119,docshell/test/mochitest/test_bug529119-2.html,docshell/test/mochitest/test_bug529119-2.html,skipped,skipped,neha,kmag,M4,
+1582156,1582156,docshell/test/navigation/browser_test-content-chromeflags.js,docshell/test/navigation/browser_test-content-chromeflags.js,passes,passes,neha,kashav,M4,Checks chrome flags and doesn't expect CHROME_FISSION_WINDOW.
+,,docshell/test/navigation/test_bug270414.html,docshell/test/navigation/test_bug270414.html,skipped,skipped,neha,,M4,Needs cross-process target name resolution for link clicks and form submission
+,,docshell/test/navigation/test_sessionhistory.html,docshell/test/navigation/test_sessionhistory.html,passes,passes,neha,kmag,M4,
+,,docshell/test/navigation/test_sibling-matching-parent.html,docshell/test/navigation/test_sibling-matching-parent.html,skipped,skipped,neha,,M4,Needs cross-process target name resolution for link clicks and form submission
+,,docshell/test/navigation/test_sibling-off-domain.html,docshell/test/navigation/test_sibling-off-domain.html,fails,fails,neha,,M4,Need to fix permission checks for cross-origin navigations via location setter
+,,toolkit/components/remotebrowserutils/tests/browser/browser_RemoteWebNavigation.js,toolkit/components/remotebrowserutils/tests/browser/browser_RemoteWebNavigation.js,skipped,skipped,neha,kashav,M4,BrowserTestUtils.waitForContentEvent
+,,toolkit/components/remotebrowserutils/tests/browser/browser_httpCrossOriginOpenerPolicy.js,toolkit/components/remotebrowserutils/tests/browser/browser_httpCrossOriginOpenerPolicy.js,passes,passes,neha,kmag,M4,
+1578465,1578465,toolkit/components/remotebrowserutils/tests/browser/browser_httpResponseProcessSelection.js,toolkit/components/remotebrowserutils/tests/browser/browser_httpResponseProcessSelection.js,skipped,skipped,neha,kashav,M4,BrowserTestUtils.browserLoaded call that spans a process switch
+,Core::Geolocation,,,,,,,,
+,,dom/tests/mochitest/geolocation/test_crossorigin_iframe.html,dom/tests/mochitest/geolocation/test_crossorigin_iframe.html,skipped,skipped,,tnguyen,M4,
+,Core::Layout: Form Controls,,,,,,,,
+,,layout/forms/test/test_bug287446.html,layout/forms/test/test_bug287446.html,passes,passes,,,M4,Crashes: @ nsDocShell::SetParentWidget(nsIWidget*)
+,,layout/forms/test/test_bug477700.html,layout/forms/test/test_bug477700.html,passes,passes,,,M4,Crashes: @ nsDocShell::SetParentWidget(nsIWidget*)
+,Core::Networking,,,,,,,,
+,,dom/security/test/cors/browser_CORS-console-warnings.js,dom/security/test/cors/browser_CORS-console-warnings.js,skipped,skipped,nhi,,M4,bug 1583553 - CORS warnings from cross process iframe don't show up in the webconsole
+1580750,1580750,dom/security/test/cors/test_CrossSiteXHR.html,dom/security/test/cors/test_CrossSiteXHR.html,passes,passes,nhi,valentin,M4,works -  bug 1580750
+1580750,1580750,dom/security/test/cors/test_CrossSiteXHR_cache.html,dom/security/test/cors/test_CrossSiteXHR_cache.html,passes,passes,nhi,valentin,M4,works -  bug 1580750
+1580750,1580750,dom/security/test/cors/test_CrossSiteXHR_origin.html,dom/security/test/cors/test_CrossSiteXHR_origin.html,passes,passes,nhi,valentin,M4,works -  bug 1580750
+,,netwerk/test/browser/browser_cross_process_redirect.js,netwerk/test/browser/browser_cross_process_redirect.js,fails,fails,nhi,nika,M4,test removed in bug 1576714
+,,netwerk/test/mochitests/test_1502055.html,netwerk/test/mochitests/test_1502055.html,passes,passes,nhi,valentin,M4,passes on Linux - enabled in bug 1580750
+,,netwerk/test/mochitests/test_different_domain_in_hierarchy.html,netwerk/test/mochitests/test_different_domain_in_hierarchy.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_differentdomain.html,netwerk/test/mochitests/test_differentdomain.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_image.html,netwerk/test/mochitests/test_image.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_loadflags.html,netwerk/test/mochitests/test_loadflags.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_same_base_domain.html,netwerk/test/mochitests/test_same_base_domain.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_same_base_domain_2.html,netwerk/test/mochitests/test_same_base_domain_2.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_same_base_domain_3.html,netwerk/test/mochitests/test_same_base_domain_3.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_same_base_domain_4.html,netwerk/test/mochitests/test_same_base_domain_4.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_same_base_domain_5.html,netwerk/test/mochitests/test_same_base_domain_5.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_same_base_domain_6.html,netwerk/test/mochitests/test_same_base_domain_6.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,,netwerk/test/mochitests/test_samedomain.html,netwerk/test/mochitests/test_samedomain.html,passes,passes,nhi,valentin,M4,window.opener enabled in bug 1580750
+,Core::Networking: Cookies,,,,,,,,
+,,netwerk/cookie/test/browser/browser_serviceWorker.js,netwerk/cookie/test/browser/browser_serviceWorker.js,passes,skipped,,,M4,leaks
+1580750,1580750,netwerk/cookie/test/browser/browser_sharedWorker.js,netwerk/cookie/test/browser/browser_sharedWorker.js,passes,passes,,valentin,M4,bug 1578037 - leaks
+1580750,1580750,netwerk/cookie/test/browser/browser_storage.js,netwerk/cookie/test/browser/browser_storage.js,passes,passes,,valentin,M4,works -  bug 1580750
+,Core::Permission Manager,,,,,,,,
+,,extensions/permissions/test/browser_permmgr_sync.js,extensions/permissions/test/browser_permmgr_sync.js,fails,fails,,,M4,"Bug 1576995 - This sets ipc.keepProcessesAlive.web, which isn't going to work correctly with Fission."
+,Core::Privacy: Anti-Tracking,,,,,,,,
+,,toolkit/components/antitracking/test/browser/browser_addonHostPermissionIgnoredInTP.js,toolkit/components/antitracking/test/browser/browser_addonHostPermissionIgnoredInTP.js,skipped,skipped,ehsan,,M5,tracking protection failures blocked on WindowContext
+,,toolkit/components/antitracking/test/browser/browser_allowListSeparationInPrivateAndNormalWindows.js,toolkit/components/antitracking/test/browser/browser_allowListSeparationInPrivateAndNormalWindows.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingCookies.js,toolkit/components/antitracking/test/browser/browser_blockingCookies.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingDOMCache.js,toolkit/components/antitracking/test/browser/browser_blockingDOMCache.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingIndexedDb.js,toolkit/components/antitracking/test/browser/browser_blockingIndexedDb.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingIndexedDbInWorkers.js,toolkit/components/antitracking/test/browser/browser_blockingIndexedDbInWorkers.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingLocalStorage.js,toolkit/components/antitracking/test/browser/browser_blockingLocalStorage.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingMessaging.js,toolkit/components/antitracking/test/browser/browser_blockingMessaging.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingNoOpener.js,toolkit/components/antitracking/test/browser/browser_blockingNoOpener.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingServiceWorkers.js,toolkit/components/antitracking/test/browser/browser_blockingServiceWorkers.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingServiceWorkersStorageAccessAPI.js,toolkit/components/antitracking/test/browser/browser_blockingServiceWorkersStorageAccessAPI.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingSessionStorage.js,toolkit/components/antitracking/test/browser/browser_blockingSessionStorage.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_blockingSharedWorkers.js,toolkit/components/antitracking/test/browser/browser_blockingSharedWorkers.js,skipped,skipped,ehsan,,M5,
+1578038,1578038,toolkit/components/antitracking/test/browser/browser_denyPermissionForTracker.js,toolkit/components/antitracking/test/browser/browser_denyPermissionForTracker.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_doublyNestedTracker.js,toolkit/components/antitracking/test/browser/browser_doublyNestedTracker.js,fails,fails,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_imageCache4.js,toolkit/components/antitracking/test/browser/browser_imageCache4.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_imageCache8.js,toolkit/components/antitracking/test/browser/browser_imageCache8.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_localStorageEvents.js,toolkit/components/antitracking/test/browser/browser_localStorageEvents.js,skipped,skipped,ehsan,,M5,"Assertion failure: !thisBrowserParent == !thisBrowserHost, at dom/ipc/ContentParent.cpp:4716"
+,,toolkit/components/antitracking/test/browser/browser_partitionedCookies.js,toolkit/components/antitracking/test/browser/browser_partitionedCookies.js,skipped,skipped,ehsan,,M5,"JavaScript error: resource://testing-common/content-task.js line 62 > eval, line 8: SecurityError: Permission denied to access property ""document"" on cross-origin object"
+,,toolkit/components/antitracking/test/browser/browser_partitionedDOMCache.js,toolkit/components/antitracking/test/browser/browser_partitionedDOMCache.js,skipped,skipped,ehsan,,M5,"JavaScript error: resource://testing-common/content-task.js line 62 > eval, line 8: SecurityError: Permission denied to access property ""document"" on cross-origin object"
+,,toolkit/components/antitracking/test/browser/browser_partitionedIndexedDB.js,toolkit/components/antitracking/test/browser/browser_partitionedIndexedDB.js,skipped,skipped,ehsan,,M5,"JavaScript error: resource://testing-common/content-task.js line 62 > eval, line 8: SecurityError: Permission denied to access property ""document"" on cross-origin object"
+,,toolkit/components/antitracking/test/browser/browser_partitionedLocalStorage.js,toolkit/components/antitracking/test/browser/browser_partitionedLocalStorage.js,skipped,skipped,ehsan,,M5,"JavaScript error: https://example.com/browser/toolkit/components/antitracking/test/browser/storageAccessAPIHelpers.js, line 9: NS_ERROR_NOT_AVAILABLE"
+,,toolkit/components/antitracking/test/browser/browser_partitionedLocalStorage_events.js,toolkit/components/antitracking/test/browser/browser_partitionedLocalStorage_events.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_partitionedMessaging.js,toolkit/components/antitracking/test/browser/browser_partitionedMessaging.js,skipped,skipped,ehsan,,M5,
+1570912,1570912,toolkit/components/antitracking/test/browser/browser_partitionedServiceWorkers.js,toolkit/components/antitracking/test/browser/browser_partitionedServiceWorkers.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_partitionedSharedWorkers.js,toolkit/components/antitracking/test/browser/browser_partitionedSharedWorkers.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_permissionInNormalWindows.js,toolkit/components/antitracking/test/browser/browser_permissionInNormalWindows.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_permissionInPrivateWindows.js,toolkit/components/antitracking/test/browser/browser_permissionInPrivateWindows.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_script.js,toolkit/components/antitracking/test/browser/browser_script.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_siteSpecificWorkArounds.js,toolkit/components/antitracking/test/browser/browser_siteSpecificWorkArounds.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_socialtracking.js,toolkit/components/antitracking/test/browser/browser_socialtracking.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_storageAccessDoorHanger.js,toolkit/components/antitracking/test/browser/browser_storageAccessDoorHanger.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_storageAccessPrivateWindow.js,toolkit/components/antitracking/test/browser/browser_storageAccessPrivateWindow.js,passes,passes,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_storageAccessPromiseRejectHandlerUserInteraction.js,toolkit/components/antitracking/test/browser/browser_storageAccessPromiseRejectHandlerUserInteraction.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_storageAccessPromiseResolveHandlerUserInteraction.js,toolkit/components/antitracking/test/browser/browser_storageAccessPromiseResolveHandlerUserInteraction.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_storageAccessRemovalNavigateSubframe.js,toolkit/components/antitracking/test/browser/browser_storageAccessRemovalNavigateSubframe.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_storageAccessRemovalNavigateTopframe.js,toolkit/components/antitracking/test/browser/browser_storageAccessRemovalNavigateTopframe.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_storageAccessSandboxed.js,toolkit/components/antitracking/test/browser/browser_storageAccessSandboxed.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_storageAccessWithHeuristics.js,toolkit/components/antitracking/test/browser/browser_storageAccessWithHeuristics.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_subResources.js,toolkit/components/antitracking/test/browser/browser_subResources.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_urlDecorationStripping.js,toolkit/components/antitracking/test/browser/browser_urlDecorationStripping.js,passes,passes,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_subResourcesPartitioned.js,toolkit/components/antitracking/test/browser/browser_subResourcesPartitioned.js,skipped,skipped,ehsan,,M5,
+,,toolkit/components/antitracking/test/browser/browser_workerPropagation.js,toolkit/components/antitracking/test/browser/browser_workerPropagation.js,skipped,skipped,ehsan,,M5,
+,Core::Plug-ins,,,,,,,,
+1586817,1586817,browser/base/content/test/plugins/browser_CTP_context_menu.js,browser/base/content/test/plugins/browser_CTP_context_menu.js,skipped,skipped,jimm,mconley,M∞,
+1586817,1586817,browser/base/content/test/plugins/browser_CTP_context_menu.js,browser/base/content/test/plugins/browser_CTP_context_menu.js,skipped,skipped,jimm,mconley,M∞,
+1586817,1586817,browser/base/content/test/plugins/browser_bug744745.js,browser/base/content/test/plugins/browser_bug744745.js,skipped,skipped,jimm,mconley,M∞,
+1586817,1586817,browser/base/content/test/plugins/browser_pluginCrashCommentAndURL.js,browser/base/content/test/plugins/browser_pluginCrashCommentAndURL.js,skipped,skipped,jimm,mconley,M∞,
+1586817,1586817,browser/base/content/test/plugins/browser_subframe_access_hidden_plugins.js,browser/base/content/test/plugins/browser_subframe_access_hidden_plugins.js,skipped,skipped,jimm,mconley,M∞,
+,Core::Security,,,,,,,,
+,,browser/components/resistfingerprinting/test/browser/browser_navigator.js,browser/components/resistfingerprinting/test/browser/browser_navigator.js,skipped,skipped,wennie,,M4,
+,,docshell/test/navigation/test_bug13871.html,docshell/test/navigation/test_bug13871.html,skipped,skipped,wennie,,M4,Times out.
+,,docshell/test/navigation/test_child.html,docshell/test/navigation/test_child.html,skipped,skipped,wennie,,M4,Times out.
+,,docshell/test/navigation/test_grandchild.html,docshell/test/navigation/test_grandchild.html,fails,fails,wennie,,M4,
+,,docshell/test/navigation/test_not-opener.html,docshell/test/navigation/test_not-opener.html,skipped,skipped,wennie,,M4,Times out.
+,,docshell/test/navigation/test_opener.html,docshell/test/navigation/test_opener.html,skipped,skipped,wennie,,M4,Times out.
+,,docshell/test/navigation/test_popup-navigates-children.html,docshell/test/navigation/test_popup-navigates-children.html,skipped,skipped,wennie,,M4,Times out.
+,,docshell/test/navigation/test_reserved.html,docshell/test/navigation/test_reserved.html,skipped,skipped,wennie,,M4,Times out.
+,Core::Security: PSM,,,,,,,,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_bug329869.html,security/manager/ssl/tests/mochitest/mixedcontent/test_bug329869.html,passes,passes,,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_bug383369.html,security/manager/ssl/tests/mochitest/mixedcontent/test_bug383369.html,passes,passes,,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_bug455367.html,security/manager/ssl/tests/mochitest/mixedcontent/test_bug455367.html,passes,passes,,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_bug472986.html,security/manager/ssl/tests/mochitest/mixedcontent/test_bug472986.html,passes,skipped,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_bug477118.html,security/manager/ssl/tests/mochitest/mixedcontent/test_bug477118.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_bug521461.html,security/manager/ssl/tests/mochitest/mixedcontent/test_bug521461.html,skipped,skipped,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_cssBefore1.html,security/manager/ssl/tests/mochitest/mixedcontent/test_cssBefore1.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_cssContent1.html,security/manager/ssl/tests/mochitest/mixedcontent/test_cssContent1.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_cssContent2.html,security/manager/ssl/tests/mochitest/mixedcontent/test_cssContent2.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_documentWrite1.html,security/manager/ssl/tests/mochitest/mixedcontent/test_documentWrite1.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_documentWrite2.html,security/manager/ssl/tests/mochitest/mixedcontent/test_documentWrite2.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_dynDelayedUnsecurePicture.html,security/manager/ssl/tests/mochitest/mixedcontent/test_dynDelayedUnsecurePicture.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_dynDelayedUnsecureXHR.html,security/manager/ssl/tests/mochitest/mixedcontent/test_dynDelayedUnsecureXHR.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_dynUnsecureBackground.html,security/manager/ssl/tests/mochitest/mixedcontent/test_dynUnsecureBackground.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_dynUnsecureIframeRedirect.html,security/manager/ssl/tests/mochitest/mixedcontent/test_dynUnsecureIframeRedirect.html,skipped,skipped,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_dynUnsecurePicture.html,security/manager/ssl/tests/mochitest/mixedcontent/test_dynUnsecurePicture.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_dynUnsecurePicturePreload.html,security/manager/ssl/tests/mochitest/mixedcontent/test_dynUnsecurePicturePreload.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_innerHtmlDelayedUnsecurePicture.html,security/manager/ssl/tests/mochitest/mixedcontent/test_innerHtmlDelayedUnsecurePicture.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_innerHtmlUnsecurePicture.html,security/manager/ssl/tests/mochitest/mixedcontent/test_innerHtmlUnsecurePicture.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_javascriptPicture.html,security/manager/ssl/tests/mochitest/mixedcontent/test_javascriptPicture.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_secureAll.html,security/manager/ssl/tests/mochitest/mixedcontent/test_secureAll.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_securePicture.html,security/manager/ssl/tests/mochitest/mixedcontent/test_securePicture.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureBackground.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureBackground.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureCSS.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureCSS.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureIframe.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureIframe.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureIframe2.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureIframe2.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureIframeRedirect.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureIframeRedirect.html,fails,fails,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecurePicture.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecurePicture.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecurePictureDup.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecurePictureDup.html,passes,skipped,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecurePictureInIframe.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecurePictureInIframe.html,passes,passes,keeler,jkt,M4,
+,,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureRedirect.html,security/manager/ssl/tests/mochitest/mixedcontent/test_unsecureRedirect.html,passes,passes,keeler,jkt,M4,
+,Core::WebRTC,,,,,,,,
+,,browser/base/content/test/webrtc/browser_devices_get_user_media.js,browser/base/content/test/webrtc/browser_devices_get_user_media.js,skipped,skipped,drno,Neil,M4,
+,,browser/base/content/test/webrtc/browser_devices_get_user_media_multi_process.js,browser/base/content/test/webrtc/browser_devices_get_user_media_multi_process.js,skipped,skipped,drno,Neil,M4,Fails intermittently.
+,,browser/base/content/test/webrtc/browser_devices_get_user_media_tear_off_tab.js,browser/base/content/test/webrtc/browser_devices_get_user_media_tear_off_tab.js,skipped,skipped,drno,Neil,M4,
+,,browser/base/content/test/webrtc/browser_devices_get_user_media_unprompted_access_tear_off_tab.js,browser/base/content/test/webrtc/browser_devices_get_user_media_unprompted_access_tear_off_tab.js,skipped,skipped,drno,Neil,M4,
+1542415,1542415,dom/media/tests/mochitest/identity/test_loginNeeded.html,dom/media/tests/mochitest/identity/test_loginNeeded.html,passes,passes,drno,kmag,M4,
+,Core::Widget,,,,,,,,
+,,widget/tests/browser/browser_test_procinfo.js,widget/tests/browser/browser_test_procinfo.js,passes,passes,,,M4,Bug 1576995
+,Core::Window Management,,,,,,,,
+,,toolkit/components/windowcreator/test/browser_bug1204626.js,toolkit/components/windowcreator/test/browser_bug1204626.js,fails,skipped,neil,,M4,opt: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIWebBrowserPersist.saveDocument]
+1585830,1585830,toolkit/components/windowwatcher/test/browser_new_content_window_from_chrome_principal.js,toolkit/components/windowwatcher/test/browser_new_content_window_from_chrome_principal.js,passes,passes,neil,mccr8,M4,"test checks that remoteType is ""web""
+"
+,Core::XPConnect,,,,,,,,
+1576742,1576742,js/xpconnect/tests/mochitest/test_bug478438.html,js/xpconnect/tests/mochitest/test_bug478438.html,passes,passes,,kmag,M4,
+1532994,1532994,js/xpconnect/tests/mochitest/test_bug504877.html,js/xpconnect/tests/mochitest/test_bug504877.html,passes,passes,,kmag,M4,
+,,js/xpconnect/tests/mochitest/test_bug629227.html,js/xpconnect/tests/mochitest/test_bug629227.html,passes,passes,,,M4,Times out.
+1573621,1573621,js/xpconnect/tests/mochitest/test_bug636097.html,js/xpconnect/tests/mochitest/test_bug636097.html,passes,passes,,kmag,M4,Bug 1573621: window.location access after cross-origin navigation.
+1573621,1573621,js/xpconnect/tests/mochitest/test_bug800864.html,js/xpconnect/tests/mochitest/test_bug800864.html,passes,passes,,kmag,M4,Bug 1573621: window.location access after cross-origin navigation.
+1582520,1582520,js/xpconnect/tests/mochitest/test_bug802557.html,js/xpconnect/tests/mochitest/test_bug802557.html,passes,passes,,kmag,M4,
+1576787,1576787,js/xpconnect/tests/mochitest/test_bug870423.html,js/xpconnect/tests/mochitest/test_bug870423.html,passes,passes,,pbone,M4,isinstance hooks for remote object proxies.
+1578628,1578628,js/xpconnect/tests/mochitest/test_bug916945.html,js/xpconnect/tests/mochitest/test_bug916945.html,passes,passes,,pbone,M4,"""name"" attribute on cross-origin frames"
+1583094,1583094,js/xpconnect/tests/mochitest/test_bug940783.html,js/xpconnect/tests/mochitest/test_bug940783.html,fails,fails,peterv,,M5,History access doesn't fail with the correct exception.
+1582520,1582520,js/xpconnect/tests/mochitest/test_bug965082.html,js/xpconnect/tests/mochitest/test_bug965082.html,skipped,skipped,peterv,kmag,M4,
+,,,,,,,,,
+,,devtools/client/webconsole/test/browser/browser_console_open_or_focus.js,devtools/client/webconsole/test/browser/browser_console_open_or_focus.js,passes,passes,,nchevobbe,M5,Looks like a regular intermittent that might be more visible in a fission world | Bug 1581033
+,,devtools/client/webconsole/test/browser/browser_webconsole_certificate_messages.js,devtools/client/webconsole/test/browser/browser_webconsole_certificate_messages.js,skipped,skipped,,,M5,[switching-target] | navigating from data URL to example.com make the toolbox restart so we don't have the right hud reference (Bug 1565263 might help)
+,,devtools/client/webconsole/test/browser/browser_webconsole_csp_ignore_reflected_xss_message.js,devtools/client/webconsole/test/browser/browser_webconsole_csp_ignore_reflected_xss_message.js,fails,fails,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_csp_violation.js,devtools/client/webconsole/test/browser/browser_webconsole_csp_violation.js,fails,fails,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_cspro.js,devtools/client/webconsole/test/browser/browser_webconsole_cspro.js,skipped,skipped,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_hpkp_invalid-headers.js,devtools/client/webconsole/test/browser/browser_webconsole_hpkp_invalid-headers.js,skipped,skipped,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_hsts_invalid-headers.js,devtools/client/webconsole/test/browser/browser_webconsole_hsts_invalid-headers.js,skipped,skipped,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_inspect_cross_domain_object.js,devtools/client/webconsole/test/browser/browser_webconsole_inspect_cross_domain_object.js,skipped,skipped,,,M5,[cross-origin-frame] | messages from cross origin frame don't appear in the console
+,,devtools/client/webconsole/test/browser/browser_webconsole_message_categories.js,devtools/client/webconsole/test/browser/browser_webconsole_message_categories.js,skipped,skipped,,,M5,[switching-target] (test pass if starting from an example.com test page)
+,,devtools/client/webconsole/test/browser/browser_webconsole_navigate_to_parse_error.js,devtools/client/webconsole/test/browser/browser_webconsole_navigate_to_parse_error.js,fails,fails,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_network_exceptions.js,devtools/client/webconsole/test/browser/browser_webconsole_network_exceptions.js,skipped,skipped,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_network_messages_openinnet.js,devtools/client/webconsole/test/browser/browser_webconsole_network_messages_openinnet.js,fails,fails,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_network_messages_resend_request.js,devtools/client/webconsole/test/browser/browser_webconsole_network_messages_resend_request.js,fails,fails,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_network_reset_filter.js,devtools/client/webconsole/test/browser/browser_webconsole_network_reset_filter.js,skipped,skipped,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_sandbox_update_after_navigation.js,devtools/client/webconsole/test/browser/browser_webconsole_sandbox_update_after_navigation.js,fails,fails,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_show_subresource_security_errors.js,devtools/client/webconsole/test/browser/browser_webconsole_show_subresource_security_errors.js,fails,fails,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_shows_reqs_from_netmonitor.js,devtools/client/webconsole/test/browser/browser_webconsole_shows_reqs_from_netmonitor.js,skipped,skipped,,,M5,[switching-target] + failure on pending promise while closing
+,,devtools/client/webconsole/test/browser/browser_webconsole_shows_reqs_in_netmonitor.js,devtools/client/webconsole/test/browser/browser_webconsole_shows_reqs_in_netmonitor.js,fails,fails,,,M5,[switching-target]
+,,devtools/client/webconsole/test/browser/browser_webconsole_trackingprotection_errors.js,devtools/client/webconsole/test/browser/browser_webconsole_trackingprotection_errors.js,skipped,skipped,,,M5,"message missing, not sure if related to switching target"
+,,devtools/client/webconsole/test/browser/browser_webconsole_warning_group_content_blocking.js,devtools/client/webconsole/test/browser/browser_webconsole_warning_group_content_blocking.js,skipped,skipped,,,M5,"test passing locally, probably an intermittent"
+,,,,,,,,,
+,,devtools/client/framework/test/browser_toolbox_window_title_changes.js,devtools/client/framework/test/browser_toolbox_window_title_changes.js,skipped,skipped,,,M5,
+,,devtools/client/framework/test/browser_toolbox_window_title_frame_select.js,devtools/client/framework/test/browser_toolbox_window_title_frame_select.js,fails,fails,,,M5,
+,,,,,,,,,
+,,devtools/client/shared/test/browser_spectrum.js,devtools/client/shared/test/browser_spectrum.js,passes,skipped,,,M5,
+,,devtools/server/tests/browser/browser_accessibility_keyboard_audit.js,devtools/server/tests/browser/browser_accessibility_keyboard_audit.js,passes,skipped,,,M5,
+,,devtools/server/tests/browser/browser_accessibility_text_label_audit.js,devtools/server/tests/browser/browser_accessibility_text_label_audit.js,passes,skipped,,,M5,Fails intermittently under Fission.
+,,devtools/server/tests/browser/browser_accessibility_text_label_audit_frame.js,devtools/server/tests/browser/browser_accessibility_text_label_audit_frame.js,passes,passes,,,M5,Fails intermittently under Fission.
+,,devtools/server/tests/browser/browser_animation_getSubTreeAnimations.js,devtools/server/tests/browser/browser_animation_getSubTreeAnimations.js,fails,fails,,,M5,
+,,devtools/server/tests/browser/browser_animation_playPauseIframe.js,devtools/server/tests/browser/browser_animation_playPauseIframe.js,fails,fails,,,M5,
+1576814,1576814,devtools/server/tests/browser/browser_storage_dynamic_windows.js,devtools/server/tests/browser/browser_storage_dynamic_windows.js,skipped,skipped,,pbone,M5,"
+"
+,,devtools/server/tests/browser/browser_storage_listings.js,devtools/server/tests/browser/browser_storage_listings.js,fails,fails,,,M5,
+,,devtools/server/tests/browser/browser_storage_updates.js,devtools/server/tests/browser/browser_storage_updates.js,fails,fails,,,M5,
+,,dom/tests/browser/browser_ConsoleStorageAPITests.js,dom/tests/browser/browser_ConsoleStorageAPITests.js,skipped,skipped,,,M5,
+,,,,,,,,,
+,,devtools/client/inspector/test/browser_inspector_navigate_to_errors.js,devtools/client/inspector/test/browser_inspector_navigate_to_errors.js,skipped,skipped,,,M5,
+,,devtools/client/inspector/test/browser_inspector_open_on_neterror.js,devtools/client/inspector/test/browser_inspector_open_on_neterror.js,skipped,skipped,,,M5,
+,,devtools/client/inspector/test/browser_inspector_remove-iframe-during-load.js,devtools/client/inspector/test/browser_inspector_remove-iframe-during-load.js,fails,skipped,,,M5,
+,,devtools/client/inspector/test/browser_inspector_search-04.js,devtools/client/inspector/test/browser_inspector_search-04.js,fails,fails,,,M5,
+,,devtools/client/inspector/test/browser_inspector_search-05.js,devtools/client/inspector/test/browser_inspector_search-05.js,skipped,skipped,,,M5,
+,,,,,,,,,
+,,devtools/client/responsive/test/browser/browser_container_tab.js,devtools/client/responsive/test/browser/browser_container_tab.js,skipped,skipped,,,M5,
+,,devtools/client/responsive/test/browser/browser_preloaded_newtab.js,devtools/client/responsive/test/browser/browser_preloaded_newtab.js,skipped,skipped,,,M5,
+,,devtools/client/responsive/test/browser/browser_viewport_resizing_scrollbar.js,devtools/client/responsive/test/browser/browser_viewport_resizing_scrollbar.js,passes,skipped,,,M5,
+,,,,,,,,,
+,,devtools/client/storage/test/browser_storage_basic.js,devtools/client/storage/test/browser_storage_basic.js,fails,fails,,,M5,Storage panel tests are using iframes with distinct domains and so triggers fission iframes in distinct process and break the tests
+,,devtools/client/storage/test/browser_storage_basic_usercontextid_1.js,devtools/client/storage/test/browser_storage_basic_usercontextid_1.js,fails,fails,,,M5,Making the Storage panel work with fission is a non-goal at the moment for the devtools team.
+,,devtools/client/storage/test/browser_storage_basic_usercontextid_2.js,devtools/client/storage/test/browser_storage_basic_usercontextid_2.js,fails,fails,,,M5,The panel is due for removal as soon as storage can be inspected/edited in the new Application panel. We should skip those tests.
+,,devtools/client/storage/test/browser_storage_basic_with_fragment.js,devtools/client/storage/test/browser_storage_basic_with_fragment.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_cache_delete.js,devtools/client/storage/test/browser_storage_cache_delete.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_cookies_delete_all.js,devtools/client/storage/test/browser_storage_cookies_delete_all.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_cookies_domain.js,devtools/client/storage/test/browser_storage_cookies_domain.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_delete.js,devtools/client/storage/test/browser_storage_delete.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_delete_all.js,devtools/client/storage/test/browser_storage_delete_all.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_delete_tree.js,devtools/client/storage/test/browser_storage_delete_tree.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_delete_usercontextid.js,devtools/client/storage/test/browser_storage_delete_usercontextid.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_dom_cache_disabled.js,devtools/client/storage/test/browser_storage_dom_cache_disabled.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_dynamic_updates_cookies.js,devtools/client/storage/test/browser_storage_dynamic_updates_cookies.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_sidebar.js,devtools/client/storage/test/browser_storage_sidebar.js,fails,fails,,,M5,
+,,devtools/client/storage/test/browser_storage_sidebar_toggle.js,devtools/client/storage/test/browser_storage_sidebar_toggle.js,fails,fails,,,M5,
+,,,,,,,,,
+,,devtools/client/styleeditor/test/browser_styleeditor_bug_740541_iframes.js,devtools/client/styleeditor/test/browser_styleeditor_bug_740541_iframes.js,skipped,skipped,,,M5,
+,,devtools/client/styleeditor/test/browser_styleeditor_fetch-from-netmonitor.js,devtools/client/styleeditor/test/browser_styleeditor_fetch-from-netmonitor.js,fails,fails,,,M5,
+,DevTools::about:debugging,,,,,,,,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_console.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_console.js,passes,passes,,ochameau,M4,"They seem to pass locally, but let's see what try says https://treeherder.mozilla.org/#/jobs?repo=try&revision=4ef55c5d5a056c4f83684e7a4f2a2343bdb0000f"
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_debugger.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_debugger.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_inspector.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_inspector.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_nobg.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_nobg.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_popup.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_addons_debug_popup.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_debug-target-pane_empty.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_debug-target-pane_empty.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_contextmenu.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_contextmenu.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_contextmenu_markupview.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_contextmenu_markupview.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_focus.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_focus.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_menubar.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_menubar.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_performance.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_performance.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_reload.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_reload.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_shortcuts.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_shortcuts.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_splitconsole_key.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_splitconsole_key.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_target_destroyed.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_target_destroyed.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_tooltip_markupview.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_devtoolstoolbox_tooltip_markupview.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_fenix_runtime_display.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_fenix_runtime_display.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_message_close.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_message_close.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_process_main.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_process_main.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_process_main_local.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_process_main_local.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_serviceworker_timeout.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_serviceworker_timeout.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_telemetry_inspect.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_telemetry_inspect.js,passes,passes,,ochameau,M4,
+1576586,1576586,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_thisfirefox_worker_inspection.js,devtools/client/aboutdebugging/test/browser/browser_aboutdebugging_thisfirefox_worker_inspection.js,passes,passes,,ochameau,M4,
+,Firefox::Activity Streams: Newtab,,,,,,,,
+,,browser/components/newtab/test/browser/browser_asrouter_cfr.js,browser/components/newtab/test/browser/browser_asrouter_cfr.js,skipped,skipped,,andreio,M4,depends on bug 1585777 and bug 1578465
+,Firefox::Address Bar,,,,,,,,
+,,browser/components/urlbar/tests/browser/browser_autoFill_canonize.js,browser/components/urlbar/tests/browser/browser_autoFill_canonize.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_autocomplete_edit_completed.js,browser/components/urlbar/tests/browser/browser_autocomplete_edit_completed.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_canonizeURL.js,browser/components/urlbar/tests/browser/browser_canonizeURL.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_inputHistory.js,browser/components/urlbar/tests/browser/browser_inputHistory.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_inputHistory_emptystring.js,browser/components/urlbar/tests/browser/browser_inputHistory_emptystring.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_keepStateAcrossTabSwitches.js,browser/components/urlbar/tests/browser/browser_keepStateAcrossTabSwitches.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_keywordSearch.js,browser/components/urlbar/tests/browser/browser_keywordSearch.js,skipped,skipped,adw/mikedeboer,,M4,"Initiates non-local network connections, for some reason"
+,,browser/components/urlbar/tests/browser/browser_moz_action_link.js,browser/components/urlbar/tests/browser/browser_moz_action_link.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_stop_pending.js,browser/components/urlbar/tests/browser/browser_stop_pending.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_urlbarEnterAfterMouseOver.js,browser/components/urlbar/tests/browser/browser_urlbarEnterAfterMouseOver.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_urlbarSearchSingleWordNotification.js,browser/components/urlbar/tests/browser/browser_urlbarSearchSingleWordNotification.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_urlbarSearchSuggestions.js,browser/components/urlbar/tests/browser/browser_urlbarSearchSuggestions.js,skipped,skipped,adw/mikedeboer,,M4,
+,,browser/components/urlbar/tests/browser/browser_urlbarStop.js,browser/components/urlbar/tests/browser/browser_urlbarStop.js,skipped,skipped,adw/mikedeboer,,M4,
+,Firefox::Bookmarks & History,,,,,,,,
+,,browser/components/places/tests/browser/browser_bookmark_titles.js,browser/components/places/tests/browser/browser_bookmark_titles.js,skipped,skipped,mak77,,M4,
+,,browser/components/places/tests/browser/browser_click_bookmarks_on_toolbar.js,browser/components/places/tests/browser/browser_click_bookmarks_on_toolbar.js,skipped,skipped,mak77,,M4,
+,Firefox::Enterprise Policies,,,,,,,,
+1585776,1585776,browser/components/enterprisepolicies/tests/browser/browser_policy_extensionsettings.js,browser/components/enterprisepolicies/tests/browser/browser_policy_extensionsettings.js,skipped,skipped,,,M4,
+,Firefox::File Handling,,,,,,,,
+1586148,1586148,uriloader/exthandler/tests/mochitest/browser_web_protocol_handlers.js,uriloader/exthandler/tests/mochitest/browser_web_protocol_handlers.js,skipped,skipped,Gijs,Gijs,M4,Gijs: offhand I suspect this indicates actual brokenness of web protocol handlers.
+,Firefox::General,,,,,,,,
+,,browser/base/content/test/about/browser_aboutCertError.js,browser/base/content/test/about/browser_aboutCertError.js,skipped,skipped,dolske,kashav,M4,"Calls ContentTaskUtils.waitForEvent() on ""this"" in a SpecialPowers task."
+1583240,1583240,browser/base/content/test/about/browser_aboutHome_search_composing.js,browser/base/content/test/about/browser_aboutHome_search_composing.js,skipped,skipped,dolske,kashav,M4,Calls BrowserTestUtils.waitForDocLoadAndStopIt() which uses the content_script framescript (I think this is the problem? content_script never runs).
+1583240,1583240,browser/base/content/test/about/browser_aboutHome_search_telemetry.js,browser/base/content/test/about/browser_aboutHome_search_telemetry.js,skipped,skipped,dolske,kashav,M4,BrowserTestUtils.waitForDocLoadAndStopIt()
+,,browser/base/content/test/about/browser_bug435325.js,browser/base/content/test/about/browser_bug435325.js,skipped,skipped,dolske,kashav,M4,Calls BrowserTestUtils.waitForErrorPage() which never resolves.
+,,browser/base/content/test/favicons/browser_favicon_change_not_in_document.js,browser/base/content/test/favicons/browser_favicon_change_not_in_document.js,fails,fails,dolske,mccr8,M4,
+,,browser/base/content/test/general/browser_addCertException.js,browser/base/content/test/general/browser_addCertException.js,skipped,skipped,dolske,kashav,M4,BrowserTestUtils.waitForErrorPage()
+,,browser/base/content/test/general/browser_alltabslistener.js,browser/base/content/test/general/browser_alltabslistener.js,fails,fails,dolske,,M4,
+,,browser/base/content/test/general/browser_bug431826.js,browser/base/content/test/general/browser_bug431826.js,skipped,skipped,dolske,kashav,M4,
+1578465,1578465,browser/base/content/test/general/browser_bug441778.js,browser/base/content/test/general/browser_bug441778.js,skipped,skipped,dolske,kashav,M4,BrowserTestUtils.browserLoaded()
+,,browser/base/content/test/general/browser_bug462673.js,browser/base/content/test/general/browser_bug462673.js,passes,skipped,dolske,,M4,Causes shutdown crashes when running under Fission.
+1578465,1578465,browser/base/content/test/general/browser_bug575561.js,browser/base/content/test/general/browser_bug575561.js,skipped,skipped,dolske,kashav,M4,"Calls BrowserTestUtils.browserLoaded(), which uses the content-utils.js framescript to listen for ""browser-test-utils:loadEvent"" events."
+,,browser/base/content/test/general/browser_bug633691.js,browser/base/content/test/general/browser_bug633691.js,skipped,skipped,dolske,,M4,
+,,browser/base/content/test/general/browser_bug839103.js,browser/base/content/test/general/browser_bug839103.js,skipped,skipped,dolske,,M4,
+,,browser/base/content/test/general/browser_newwindow_focus.js,browser/base/content/test/general/browser_newwindow_focus.js,skipped,skipped,dolske,kashav,M4,Calls BrowserTestUtils.contentPainted() which creates a ContentTask that waits for a MozAfterPaint (which it never gets).
+,,browser/base/content/test/general/browser_printpreview.js,browser/base/content/test/general/browser_printpreview.js,skipped,skipped,dolske,kashav,M4,Passes locally on OS X
+,,browser/base/content/test/general/browser_ssl_error_reports.js,browser/base/content/test/general/browser_ssl_error_reports.js,skipped,skipped,dolske,kashav,M4,BrowserTestUtils.waitForErrorPage()
+,,browser/base/content/test/general/browser_tab_drag_drop_perwindow.js,browser/base/content/test/general/browser_tab_drag_drop_perwindow.js,fails,fails,dolske,kashav,M4,"Tries to create non-remote window, fails in nsAppStartup::CreateChromeWindow (will doing this ever be supported with Fission-enabled?)."
+1582531,1582531,browser/base/content/test/general/browser_tabs_close_beforeunload.js,browser/base/content/test/general/browser_tabs_close_beforeunload.js,passes,passes,dolske,annyG,M4,"Expects window.open(""..."", ""_blank"") to open a new tab (opens new window with Fission enabled?)."
+,,browser/base/content/test/general/browser_unknownContentType_title.js,browser/base/content/test/general/browser_unknownContentType_title.js,fails,fails,dolske,,M4,
+,,browser/base/content/test/general/browser_web_channel.js,browser/base/content/test/general/browser_web_channel.js,skipped,skipped,dolske,,M4,
+1585727,1585727,browser/base/content/test/performance/browser_preferences_usage.js,browser/base/content/test/performance/browser_preferences_usage.js,passes,passes,dolske,emalysz,M4,
+1585498,1585498,browser/components/tests/browser/browser_initial_tab_remoteType.js,browser/components/tests/browser/browser_initial_tab_remoteType.js,passes,passes,dolske,mccr8,M4,"Checks remote types, needs to be rewritten to use E10SUtils.isWebRemoteType or some other helper (add checkBrowserRemoteType to E10SUtils?)."
+,Firefox::Keyboard Navigation,,,,,,,,
+,,browser/base/content/test/keyboard/browser_toolbarKeyNav.js,browser/base/content/test/keyboard/browser_toolbarKeyNav.js,passes,skipped,,,M4,
+,Firefox::New Tab Page,,,,,,,,
+,,toolkit/components/thumbnails/test/browser_thumbnails_bg_crash_during_capture.js,toolkit/components/thumbnails/test/browser_thumbnails_bg_crash_during_capture.js,passes,passes,,,M4,
+,Firefox::PDF Viewer,,,,,,,,
+,,browser/extensions/pdfjs/test/browser_pdfjs_main.js,browser/extensions/pdfjs/test/browser_pdfjs_main.js,skipped,skipped,bdahl,,M4,
+,,browser/extensions/pdfjs/test/browser_pdfjs_navigation.js,browser/extensions/pdfjs/test/browser_pdfjs_navigation.js,skipped,skipped,bdahl,,M4,
+,,browser/extensions/pdfjs/test/browser_pdfjs_views.js,browser/extensions/pdfjs/test/browser_pdfjs_views.js,skipped,skipped,bdahl,,M4,
+,,browser/extensions/pdfjs/test/browser_pdfjs_zoom.js,browser/extensions/pdfjs/test/browser_pdfjs_zoom.js,skipped,skipped,bdahl,,M4,
+,Firefox::Private Browsing,,,,,,,,
+,,browser/components/privatebrowsing/test/browser/browser_privatebrowsing_context_and_chromeFlags.js,browser/components/privatebrowsing/test/browser/browser_privatebrowsing_context_and_chromeFlags.js,skipped,skipped,,,M4,
+,Firefox::Session Restore,,,,,,,,
+,,browser/components/sessionstore/test/browser_586068-reload.js,browser/components/sessionstore/test/browser_586068-reload.js,fails,skipped,mdeboer,,M4,
+,,browser/components/sessionstore/test/browser_615394-SSWindowState_events_undoCloseWindow.js,browser/components/sessionstore/test/browser_615394-SSWindowState_events_undoCloseWindow.js,passes,skipped,mdeboer,,M4,
+,,browser/components/sessionstore/test/browser_625016.js,browser/components/sessionstore/test/browser_625016.js,passes,passes,mdeboer,,M4,Got unskipped in bug 1582531
+,,browser/components/sessionstore/test/browser_async_remove_tab.js,browser/components/sessionstore/test/browser_async_remove_tab.js,skipped,skipped,mdeboer,,M4,
+,,browser/components/sessionstore/test/browser_async_window_flushing.js,browser/components/sessionstore/test/browser_async_window_flushing.js,skipped,skipped,mdeboer,,M4,
+,,browser/components/sessionstore/test/browser_formdata.js,browser/components/sessionstore/test/browser_formdata.js,skipped,skipped,mdeboer,,M4,
+,,browser/components/sessionstore/test/browser_sessionHistory.js,browser/components/sessionstore/test/browser_sessionHistory.js,skipped,skipped,mdeboer,,M4,
+,,browser/components/sessionstore/test/browser_sessionStorage.js,browser/components/sessionstore/test/browser_sessionStorage.js,fails,fails,mdeboer,,M4,
+,,browser/components/sessionstore/test/browser_upgrade_backup.js,browser/components/sessionstore/test/browser_upgrade_backup.js,passes,passes,mdeboer,,M4,Got unskipped in bug 1582531
+,,browser/components/sessionstore/test/browser_windowStateContainer.js,browser/components/sessionstore/test/browser_windowStateContainer.js,passes,skipped,mdeboer,,M4,
+,Firefox::Site Identity and Permission Panels,,,,,,,,
+,,browser/base/content/test/siteIdentity/browser_no_mcb_for_loopback.js,browser/base/content/test/siteIdentity/browser_no_mcb_for_loopback.js,passes,passes,johannh,nhnt11,M4,Got unskipped in bug 1582531
+,,browser/base/content/test/permissions/browser_permissions.js,browser/base/content/test/permissions/browser_permissions.js,passes,skipped,johannh,pbz,M4,
+,,browser/base/content/test/permissions/browser_permissions_event_telemetry.js,browser/base/content/test/permissions/browser_permissions_event_telemetry.js,passes,skipped,johannh,pbz,M4,
+,,browser/base/content/test/permissions/browser_permissions_handling_user_input.js,browser/base/content/test/permissions/browser_permissions_handling_user_input.js,passes,skipped,johannh,pbz,M4,
+,,browser/base/content/test/permissions/browser_permissions_postPrompt.js,browser/base/content/test/permissions/browser_permissions_postPrompt.js,passes,skipped,johannh,pbz,M4,
+1582531,1582531,browser/base/content/test/permissions/browser_reservedkey.js,browser/base/content/test/permissions/browser_reservedkey.js,passes,passes,johannh,pbz,M4,
+1576586,1576586,browser/base/content/test/permissions/browser_temporary_permissions.js,browser/base/content/test/permissions/browser_temporary_permissions.js,passes,passes,johannh,pbz,M4,
+,,browser/base/content/test/permissions/browser_temporary_permissions_expiry.js,browser/base/content/test/permissions/browser_temporary_permissions_expiry.js,passes,skipped,johannh,pbz,M4,
+,,browser/base/content/test/popups/browser_popup_frames.js,browser/base/content/test/popups/browser_popup_frames.js,fails,fails,johannh,nhnt11,M4,
+,,browser/base/content/test/siteIdentity/browser_bug1045809.js,browser/base/content/test/siteIdentity/browser_bug1045809.js,fails,fails,johannh,nhnt11,M4,
+,,browser/base/content/test/siteIdentity/browser_check_identity_state.js,browser/base/content/test/siteIdentity/browser_check_identity_state.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/siteIdentity/browser_getSecurityInfo.js,browser/base/content/test/siteIdentity/browser_getSecurityInfo.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/siteIdentity/browser_identityPopup_clearSiteData.js,browser/base/content/test/siteIdentity/browser_identityPopup_clearSiteData.js,passes,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/siteIdentity/browser_insecureLoginForms.js,browser/base/content/test/siteIdentity/browser_insecureLoginForms.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/siteIdentity/browser_mixedContentFramesOnHttp.js,browser/base/content/test/siteIdentity/browser_mixedContentFramesOnHttp.js,fails,fails,johannh,nhnt11,M4,
+,,browser/base/content/test/siteIdentity/browser_mixed_content_cert_override.js,browser/base/content/test/siteIdentity/browser_mixed_content_cert_override.js,skipped,skipped,johannh,nhnt11,M4,
+,Firefox::Tabbed Browser,,,,,,,,
+,,browser/base/content/test/tabs/browser_e10s_switchbrowser.js,browser/base/content/test/tabs/browser_e10s_switchbrowser.js,passes,passes,dao,,M4,
+,,browser/base/content/test/tabs/browser_multiselect_tabs_open_related.js,browser/base/content/test/tabs/browser_multiselect_tabs_open_related.js,passes,passes,dao,,M4,Crashes: @ __pthread_cond_wait + 0xc0
+,,browser/base/content/test/tabs/browser_new_web_tab_in_file_process_pref.js,browser/base/content/test/tabs/browser_new_web_tab_in_file_process_pref.js,skipped,skipped,dao,,M4,
+,,browser/base/content/test/tabs/browser_tabswitch_window_focus.js,browser/base/content/test/tabs/browser_tabswitch_window_focus.js,passes,passes,dao,,M4,Got unskipped in bug 1582531
+,Firefox::Tabbed Browsing,,,,,,,,
+,,toolkit/content/tests/browser/browser_isSynthetic.js,toolkit/content/tests/browser/browser_isSynthetic.js,skipped,skipped,,,M4,
+,Firefox::Toolbars and Customization,,,,,,,,
+1586136,1586136,browser/components/customizableui/test/browser_customization_context_menus.js,browser/components/customizableui/test/browser_customization_context_menus.js,passes,passes,Gijs,Gijs,M4,Used to fail (Crashes: @ __poll_nocancel + 0x24) - now enabled
+,Firefox::Tracking Protection,,,,,,,,
+,,browser/base/content/test/trackingUI/browser_trackingUI_animation.js,browser/base/content/test/trackingUI/browser_trackingUI_animation.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_animation_2.js,browser/base/content/test/trackingUI/browser_trackingUI_animation_2.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_background_tabs.js,browser/base/content/test/trackingUI/browser_trackingUI_background_tabs.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_categories.js,browser/base/content/test/trackingUI/browser_trackingUI_categories.js,passes,passes,johannh,nhnt11,M4,Got unskipped in bug 1582531
+,,browser/base/content/test/trackingUI/browser_trackingUI_cookies_subview.js,browser/base/content/test/trackingUI/browser_trackingUI_cookies_subview.js,skipped,skipped,johannh,nhnt11,M4,
+1576418,1576418,browser/base/content/test/trackingUI/browser_trackingUI_cryptominers.js,browser/base/content/test/trackingUI/browser_trackingUI_cryptominers.js,passes,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_fetch.js,browser/base/content/test/trackingUI/browser_trackingUI_fetch.js,passes,passes,johannh,nhnt11,M4,Got unskipped in bug 1582531
+,,browser/base/content/test/trackingUI/browser_trackingUI_fingerprinters.js,browser/base/content/test/trackingUI/browser_trackingUI_fingerprinters.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_open_preferences.js,browser/base/content/test/trackingUI/browser_trackingUI_open_preferences.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_pbmode_exceptions.js,browser/base/content/test/trackingUI/browser_trackingUI_pbmode_exceptions.js,skipped,skipped,johannh,nhnt11,M4,"Crashes: @ mozilla::dom::BrowserBridgeParent::RecvShow(mozilla::gfx::IntSizeTyped<mozilla::ScreenPixel> const&, bool const&, nsSizeMode const&)"
+,,browser/base/content/test/trackingUI/browser_trackingUI_report_breakage.js,browser/base/content/test/trackingUI/browser_trackingUI_report_breakage.js,skipped,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_shield_visibility.js,browser/base/content/test/trackingUI/browser_trackingUI_shield_visibility.js,passes,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_socialtracking.js,browser/base/content/test/trackingUI/browser_trackingUI_socialtracking.js,passes,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_socialtracking_doorhanger.js,browser/base/content/test/trackingUI/browser_trackingUI_socialtracking_doorhanger.js,passes,passes,johannh,nhnt11,M4,
+1577954,1577954,browser/base/content/test/trackingUI/browser_trackingUI_state.js,browser/base/content/test/trackingUI/browser_trackingUI_state.js,skipped,skipped,johannh,nhnt11,M4,https://bugzilla.mozilla.org/show_bug.cgi?id=1511303#c1
+,,browser/base/content/test/trackingUI/browser_trackingUI_state_reset.js,browser/base/content/test/trackingUI/browser_trackingUI_state_reset.js,passes,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_telemetry.js,browser/base/content/test/trackingUI/browser_trackingUI_telemetry.js,passes,skipped,johannh,nhnt11,M4,
+,,browser/base/content/test/trackingUI/browser_trackingUI_trackers_subview.js,browser/base/content/test/trackingUI/browser_trackingUI_trackers_subview.js,passes,skipped,johannh,nhnt11,M4,
+,Remote Protocol::Agent,,,,,,,,
+1582531,1582531,remote/test/browser/browser_network_requestWillBeSent.js,remote/test/browser/browser_network_requestWillBeSent.js,passes,passes,,anny,M4,already reenabled
+1585464,1585464,remote/test/browser/browser_page_bringToFront.js,remote/test/browser/browser_page_bringToFront.js,passes,passes,,whimboo,M5,
+1585630,1585630,remote/test/browser/browser_page_frameNavigated.js,remote/test/browser/browser_page_frameNavigated.js,passes,passes,,ato,M5,
+1585630,1585630,remote/test/browser/browser_page_frameNavigated_iframe.js,remote/test/browser/browser_page_frameNavigated_iframe.js,passes,passes,,ato,M5,
+1585464,1585464,remote/test/browser/browser_page_runtime_events.js,remote/test/browser/browser_page_runtime_events.js,passes,passes,,whimboo,M5,
+1585464,1585464,remote/test/browser/browser_runtime_callFunctionOn.js,remote/test/browser/browser_runtime_callFunctionOn.js,passes,passes,,whimboo,M5,
+1585464,1585464,remote/test/browser/browser_runtime_evaluate.js,remote/test/browser/browser_runtime_evaluate.js,passes,passes,,whimboo,M5,
+1585464,1585464,remote/test/browser/browser_runtime_executionContext.js,remote/test/browser/browser_runtime_executionContext.js,passes,passes,,whimboo,M5,
+1585464,1585464,remote/test/browser/browser_runtime_get_properties.js,remote/test/browser/browser_runtime_get_properties.js,passes,passes,,whimboo,M5,
+1585464,1585464,remote/test/browser/browser_runtime_remote_objects.js,remote/test/browser/browser_runtime_remote_objects.js,passes,passes,,whimboo,M5,
+1582531,1582531,remote/test/browser/browser_session.js,remote/test/browser/browser_session.js,passes,passes,,anny,M4,already reenabled
+1585464,1585464,remote/test/browser/browser_tabs.js,remote/test/browser/browser_tabs.js,passes,passes,,whimboo,M5,
+1585464,1585464,remote/test/browser/browser_target.js,remote/test/browser/browser_target.js,passes,passes,,whimboo,M5,
+1585464,1585464,remote/test/browser/browser_target_browserContext.js,remote/test/browser/browser_target_browserContext.js,passes,passes,,whimboo,M5,
+1585464,1585464,remote/test/browser/browser_target_close.js,remote/test/browser/browser_target_close.js,passes,passes,,whimboo,M5,
+,Toolkit::Add-ons Manager,,,,,,,,
+,,toolkit/mozapps/extensions/test/browser/browser_webapi_access.js,toolkit/mozapps/extensions/test/browser/browser_webapi_access.js,skipped,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/browser/browser_webapi_addon_listener.js,toolkit/mozapps/extensions/test/browser/browser_webapi_addon_listener.js,skipped,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/browser/browser_webapi_enable.js,toolkit/mozapps/extensions/test/browser/browser_webapi_enable.js,passes,passes,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/browser/browser_webapi_install.js,toolkit/mozapps/extensions/test/browser/browser_webapi_install.js,passes,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/browser/browser_webapi_install_disabled.js,toolkit/mozapps/extensions/test/browser/browser_webapi_install_disabled.js,passes,passes,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/browser/browser_webapi_theme.js,toolkit/mozapps/extensions/test/browser/browser_webapi_theme.js,passes,passes,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/browser/browser_webapi_uninstall.js,toolkit/mozapps/extensions/test/browser/browser_webapi_uninstall.js,passes,passes,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/xpinstall/browser_badargs.js,toolkit/mozapps/extensions/test/xpinstall/browser_badargs.js,skipped,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/xpinstall/browser_badargs2.js,toolkit/mozapps/extensions/test/xpinstall/browser_badargs2.js,skipped,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/xpinstall/browser_enabled.js,toolkit/mozapps/extensions/test/xpinstall/browser_enabled.js,skipped,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/xpinstall/browser_enabled2.js,toolkit/mozapps/extensions/test/xpinstall/browser_enabled2.js,skipped,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/xpinstall/browser_enabled3.js,toolkit/mozapps/extensions/test/xpinstall/browser_enabled3.js,skipped,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/xpinstall/browser_localfile2.js,toolkit/mozapps/extensions/test/xpinstall/browser_localfile2.js,skipped,skipped,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/xpinstall/browser_newwindow.js,toolkit/mozapps/extensions/test/xpinstall/browser_newwindow.js,passes,passes,jimm,zombie,M4,
+,,toolkit/mozapps/extensions/test/xpinstall/browser_unsigned_trigger_xorigin.js,toolkit/mozapps/extensions/test/xpinstall/browser_unsigned_trigger_xorigin.js,skipped,skipped,jimm,zombie,M4,
+,Toolkit::Crash Reporting,,,,,,,,
+,,toolkit/crashreporter/test/browser/browser_bug471404.js,toolkit/crashreporter/test/browser/browser_bug471404.js,passes,passes,,,M4,
+,,toolkit/crashreporter/test/browser/browser_clearReports.js,toolkit/crashreporter/test/browser/browser_clearReports.js,passes,passes,,,M4,
+,,toolkit/content/tests/browser/browser_content_url_annotation.js,toolkit/content/tests/browser/browser_content_url_annotation.js,skipped,skipped,,,M4,
+,Toolkit::Data Sanitization,,,,,,,,
+1582531,1582531,browser/base/content/test/sanitize/browser_purgehistory_clears_sh.js,browser/base/content/test/sanitize/browser_purgehistory_clears_sh.js,passes,passes,,,M4,"Shutdown leaks, were skipped in bug 1578037, got unskipped in bug 1582531"
+1582531,1582531,browser/base/content/test/sanitize/browser_sanitize-formhistory.js,browser/base/content/test/sanitize/browser_sanitize-formhistory.js,passes,passes,,,M4,"Shutdown leaks, were skipped in bug 1578037, got unskipped in bug 1582532"
+1582531,1582531,browser/base/content/test/sanitize/browser_sanitize-offlineData.js,browser/base/content/test/sanitize/browser_sanitize-offlineData.js,passes,passes,,,M4,"Shutdown leaks, were skipped in bug 1578037, got unskipped in bug 1582533"
+1582531,1582531,browser/base/content/test/sanitize/browser_sanitize-passwordDisabledHosts.js,browser/base/content/test/sanitize/browser_sanitize-passwordDisabledHosts.js,passes,passes,,,M4,"Shutdown leaks, were skipped in bug 1578037, got unskipped in bug 1582534"
+1582531,1582531,browser/base/content/test/sanitize/browser_sanitize-sitepermissions.js,browser/base/content/test/sanitize/browser_sanitize-sitepermissions.js,passes,passes,,,M4,"Shutdown leaks, were skipped in bug 1578037, got unskipped in bug 1582535"
+1582531,1582531,browser/base/content/test/sanitize/browser_sanitize-timespans.js,browser/base/content/test/sanitize/browser_sanitize-timespans.js,passes,passes,,,M4,"Shutdown leaks, were skipped in bug 1578037, got unskipped in bug 1582536"
+1582531,1582531,browser/base/content/test/sanitize/browser_sanitizeDialog.js,browser/base/content/test/sanitize/browser_sanitizeDialog.js,passes,passes,,,M4,"Shutdown leaks, were skipped in bug 1578037, got unskipped in bug 1582537"
+,,toolkit/components/cleardata/tests/browser/browser_serviceworkers.js,toolkit/components/cleardata/tests/browser/browser_serviceworkers.js,skipped,skipped,,,M4,
+,Toolkit::Find Toolbar,,,,,,,,
+,,toolkit/modules/tests/browser/browser_Finder_hidden_textarea.js,toolkit/modules/tests/browser/browser_Finder_hidden_textarea.js,passes,passes,,,M4,
+,,toolkit/modules/tests/browser/browser_Finder_overflowed_textarea.js,toolkit/modules/tests/browser/browser_Finder_overflowed_textarea.js,passes,passes,,,M4,
+,Toolkit::Form Manager,,,,,,,,
+,,toolkit/components/satchel/test/test_form_submission.html,toolkit/components/satchel/test/test_form_submission.html,fails,fails,,Neil,M4,
+,Toolkit::General,,,,,,,,
+,,toolkit/components/mozprotocol/tests/browser_mozprotocol.js,toolkit/components/mozprotocol/tests/browser_mozprotocol.js,skipped,skipped,dolske,,M4,
+,,toolkit/components/prompts/test/test_subresources_prompts.html,toolkit/components/prompts/test/test_subresources_prompts.html,fails,fails,dolske,,M4,
+,,toolkit/content/tests/browser/browser_license_links.js,toolkit/content/tests/browser/browser_license_links.js,passes,passes,dolske,,M4,
+,,toolkit/content/tests/browser/browser_media_wakelock.js,toolkit/content/tests/browser/browser_media_wakelock.js,passes,skipped,dolske,,M4,
+,Toolkit::Notifications and Alerts,,,,,,,,
+,,browser/base/content/test/popupNotifications/browser_popupNotification_3.js,browser/base/content/test/popupNotifications/browser_popupNotification_3.js,skipped,skipped,MattN,,M4,
+,,dom/notification/test/mochitest/test_notification_tag.html,dom/notification/test/mochitest/test_notification_tag.html,fails,fails,MattN,,M4,
+,Toolkit::Password Manager,,,,,,,,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_context_menu.js,toolkit/components/passwordmgr/test/browser/browser_context_menu.js,passes,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_context_menu_autocomplete_interaction.js,toolkit/components/passwordmgr/test/browser/browser_context_menu_autocomplete_interaction.js,passes,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_context_menu_iframe.js,toolkit/components/passwordmgr/test/browser/browser_context_menu_iframe.js,skipped,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_hasInsecureLoginForms.js,toolkit/components/passwordmgr/test/browser/browser_hasInsecureLoginForms.js,skipped,skipped,MattN,Neil,M4,This test is expected to be deleted with Bug 1527828.
+1582112,1582112,toolkit/components/passwordmgr/test/browser/browser_hasInsecureLoginForms_streamConverter.js,toolkit/components/passwordmgr/test/browser/browser_hasInsecureLoginForms_streamConverter.js,skipped,skipped,MattN,,M4,This test is expected to be deleted with Bug 1527828.
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_hidden_document_autofill.js,toolkit/components/passwordmgr/test/browser/browser_hidden_document_autofill.js,fails,fails,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_http_autofill.js,toolkit/components/passwordmgr/test/browser/browser_http_autofill.js,skipped,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_insecurePasswordConsoleWarning.js,toolkit/components/passwordmgr/test/browser/browser_insecurePasswordConsoleWarning.js,passes,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_master_password_autocomplete.js,toolkit/components/passwordmgr/test/browser/browser_master_password_autocomplete.js,passes,passes,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_notifications.js,toolkit/components/passwordmgr/test/browser/browser_notifications.js,passes,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_notifications_2.js,toolkit/components/passwordmgr/test/browser/browser_notifications_2.js,passes,passes,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_notifications_password.js,toolkit/components/passwordmgr/test/browser/browser_notifications_password.js,passes,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_notifications_username.js,toolkit/components/passwordmgr/test/browser/browser_notifications_username.js,passes,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_private_window.js,toolkit/components/passwordmgr/test/browser/browser_private_window.js,skipped,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/browser/browser_username_select_dialog.js,toolkit/components/passwordmgr/test/browser/browser_username_select_dialog.js,passes,passes,MattN,Neil,M4,
+1582120,1582120,toolkit/components/passwordmgr/test/mochitest/test_autocomplete_https_upgrade.html,toolkit/components/passwordmgr/test/mochitest/test_autocomplete_https_upgrade.html,fails,fails,MattN,,M4,
+1582113,1582113,toolkit/components/passwordmgr/test/mochitest/test_autofill_from_bfcache.html,toolkit/components/passwordmgr/test/mochitest/test_autofill_from_bfcache.html,fails,fails,MattN,,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/mochitest/test_autofill_highlight.html,toolkit/components/passwordmgr/test/mochitest/test_autofill_highlight.html,fails,fails,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/mochitest/test_autofill_https_downgrade.html,toolkit/components/passwordmgr/test/mochitest/test_autofill_https_downgrade.html,skipped,skipped,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/mochitest/test_autofill_https_upgrade.html,toolkit/components/passwordmgr/test/mochitest/test_autofill_https_upgrade.html,skipped,skipped,MattN,Neil,M4,
+1582120,1582120,toolkit/components/passwordmgr/test/mochitest/test_autofocus_js.html,toolkit/components/passwordmgr/test/mochitest/test_autofocus_js.html,fails,fails,MattN,,M4,Test seems to pass locally on macOS with --enable-fission
+1567175,1567175,toolkit/components/passwordmgr/test/mochitest/test_munged_username.html,toolkit/components/passwordmgr/test/mochitest/test_munged_username.html,fails,fails,MattN,Neil,M4,
+1582116,1582116,toolkit/components/passwordmgr/test/mochitest/test_prompt_async.html,toolkit/components/passwordmgr/test/mochitest/test_prompt_async.html,fails,fails,MattN,,M4,
+1582117,1582117,toolkit/components/passwordmgr/test/mochitest/test_prompt_http.html,toolkit/components/passwordmgr/test/mochitest/test_prompt_http.html,fails,fails,MattN,,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/mochitest/test_prompt_promptAuth.html,toolkit/components/passwordmgr/test/mochitest/test_prompt_promptAuth.html,passes,passes,MattN,Neil,M4,
+1567175,1567175,toolkit/components/passwordmgr/test/mochitest/test_xhr.html,toolkit/components/passwordmgr/test/mochitest/test_xhr.html,skipped,skipped,MattN,Neil,M4,Intermittently times out under Fission.
+1567175,1567175,toolkit/components/passwordmgr/test/mochitest/test_xml_load.html,toolkit/components/passwordmgr/test/mochitest/test_xml_load.html,passes,passes,MattN,Neil,M4,
+,Toolkit::Places,,,,,,,,
+1585562,1585562,toolkit/components/places/tests/browser/browser_bug680727.js,toolkit/components/places/tests/browser/browser_bug680727.js,passes,passes,mak77,Standard8,M4,
+,Toolkit::Reader Mode,,,,,,,,
+1586139,1586139,toolkit/components/reader/test/browser_bug1124271_readerModePinnedTab.js,toolkit/components/reader/test/browser_bug1124271_readerModePinnedTab.js,skipped,skipped,gijs,kashav,M4,BrowserTestUtils.waitForContentEvent
+1586139,1586139,toolkit/components/reader/test/browser_bug1453818_samesite_cookie.js,toolkit/components/reader/test/browser_bug1453818_samesite_cookie.js,skipped,skipped,gijs,kashav,M4,BrowserTestUtils.waitForContentEvent
+1586139,1586139,toolkit/components/reader/test/browser_readerMode.js,toolkit/components/reader/test/browser_readerMode.js,skipped,skipped,gijs,kashav,M4,BrowserTestUtils.waitForContentEvent
+1586139,1586139,toolkit/components/reader/test/browser_readerMode_hidden_nodes.js,toolkit/components/reader/test/browser_readerMode_hidden_nodes.js,skipped,skipped,gijs,,M4,Waits for a domcontentloaded + mozafterpaint in content which never arrives - can probably switch to waitForContentEvent once that's fixed
+1586139,1586139,toolkit/components/reader/test/browser_readerMode_readingTime.js,toolkit/components/reader/test/browser_readerMode_readingTime.js,skipped,skipped,gijs,kashav,M4,BrowserTestUtils.waitForContentEvent
+1586139,1586139,toolkit/components/reader/test/browser_readerMode_with_anchor.js,toolkit/components/reader/test/browser_readerMode_with_anchor.js,skipped,skipped,gijs,kashav,M4,BrowserTestUtils.waitForContentEvent
+,Toolkit::Safe Browsing,,,,,,,,
+,,browser/components/safebrowsing/content/test/browser_mixedcontent_aboutblocked.js,browser/components/safebrowsing/content/test/browser_mixedcontent_aboutblocked.js,skipped,skipped,dimi,,M4,
+,,toolkit/components/url-classifier/tests/browser/browser_flashblock_off_with_always_activate.js,toolkit/components/url-classifier/tests/browser/browser_flashblock_off_with_always_activate.js,skipped,skipped,dimi,dimi,M4,
+,,toolkit/components/url-classifier/tests/browser/browser_flashblock_off_with_ask_to_activate.js,toolkit/components/url-classifier/tests/browser/browser_flashblock_off_with_ask_to_activate.js,skipped,skipped,dimi,dimi,M4,
+,,toolkit/components/url-classifier/tests/browser/browser_flashblock_off_with_never_activate.js,toolkit/components/url-classifier/tests/browser/browser_flashblock_off_with_never_activate.js,skipped,skipped,dimi,dimi,M4,
+,,toolkit/components/url-classifier/tests/browser/browser_flashblock_on_with_always_activate.js,toolkit/components/url-classifier/tests/browser/browser_flashblock_on_with_always_activate.js,skipped,skipped,dimi,dimi,M4,
+,,toolkit/components/url-classifier/tests/browser/browser_flashblock_on_with_ask_to_activate.js,toolkit/components/url-classifier/tests/browser/browser_flashblock_on_with_ask_to_activate.js,skipped,skipped,dimi,dimi,M4,
+,,toolkit/components/url-classifier/tests/browser/browser_flashblock_on_with_never_activate.js,toolkit/components/url-classifier/tests/browser/browser_flashblock_on_with_never_activate.js,skipped,skipped,dimi,dimi,M4,
+1560110,1560110,toolkit/components/url-classifier/tests/mochitest/test_classify_by_default.html,toolkit/components/url-classifier/tests/mochitest/test_classify_by_default.html,passes,skipped,dimi,,M4,Crashes intermittently: @ mozilla::dom::BrowsingContextGroup::EnsureSubscribed(mozilla::dom::ContentParent*)
+,Toolkit::Telemetry,,,,,,,,
+,,browser/modules/test/browser/browser_UsageTelemetry_domains.js,browser/modules/test/browser/browser_UsageTelemetry_domains.js,skipped,skipped,chutten,,M4,
+,,toolkit/components/telemetry/tests/browser/browser_HybridContentTelemetry.js,toolkit/components/telemetry/tests/browser/browser_HybridContentTelemetry.js,skipped,skipped,chutten,,M4,
+,Web Compatibility Tools::General,,,,,,,,
+,,browser/extensions/report-site-issue/test/browser/browser_report_site_issue.js,browser/extensions/report-site-issue/test/browser/browser_report_site_issue.js,passes,passes,,twisniewski,M4,"Test hangs, filed bug 1581180"
+,WebExtensions::General,,,,,,,,
+1587221,1587221,toolkit/components/extensions/test/mochitest/test_ext_async_clipboard.html,toolkit/components/extensions/test/mochitest/test_ext_async_clipboard.html,skipped,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_contentscript_cache.html,toolkit/components/extensions/test/mochitest/test_ext_contentscript_cache.html,fails,fails,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_contentscript_canvas.html,toolkit/components/extensions/test/mochitest/test_ext_contentscript_canvas.html,passes,skipped,jimm,zombie,M4,Fails intermittently under Fission.
+1579820,1579820,toolkit/components/extensions/test/mochitest/test_ext_cookies.html,toolkit/components/extensions/test/mochitest/test_ext_cookies.html,passes,passes,jimm,kmag,M4,Bug 1542415 thought it fixed it but it didn't and the test regressed.
+,,toolkit/components/extensions/test/mochitest/test_ext_exclude_include_globs.html,toolkit/components/extensions/test/mochitest/test_ext_exclude_include_globs.html,passes,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_new_tab_processType.html,toolkit/components/extensions/test/mochitest/test_ext_new_tab_processType.html,skipped,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_request_urlClassification.html,toolkit/components/extensions/test/mochitest/test_ext_request_urlClassification.html,passes,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_request_urlClassification.html,toolkit/components/extensions/test/mochitest/test_ext_request_urlClassification.html,passes,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_runtime_disconnect.html,toolkit/components/extensions/test/mochitest/test_ext_runtime_disconnect.html,passes,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_storage_manager_capabilities.html,toolkit/components/extensions/test/mochitest/test_ext_storage_manager_capabilities.html,passes,skipped,jimm,zombie,M4,Fails intermittently under Fission.
+,,toolkit/components/extensions/test/mochitest/test_ext_web_accessible_incognito.html,toolkit/components/extensions/test/mochitest/test_ext_web_accessible_incognito.html,passes,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_web_accessible_resources.html,toolkit/components/extensions/test/mochitest/test_ext_web_accessible_resources.html,skipped,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_webnavigation.html,toolkit/components/extensions/test/mochitest/test_ext_webnavigation.html,passes,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_webnavigation_filters.html,toolkit/components/extensions/test/mochitest/test_ext_webnavigation_filters.html,skipped,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_webrequest_hsts.html,toolkit/components/extensions/test/mochitest/test_ext_webrequest_hsts.html,skipped,skipped,jimm,zombie,M4,
+,,toolkit/components/extensions/test/mochitest/test_ext_webrequest_upgrade.html,toolkit/components/extensions/test/mochitest/test_ext_webrequest_upgrade.html,passes,skipped,jimm,zombie,M4,
+,WebExtensions::Untriaged,,,,,,,,
+,,browser/components/extensions/test/browser/browser_ExtensionControlledPopup.js,browser/components/extensions/test/browser/browser_ExtensionControlledPopup.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_addon_debugging_netmonitor.js,browser/components/extensions/test/browser/browser_ext_addon_debugging_netmonitor.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_autoplayInBackground.js,browser/components/extensions/test/browser/browser_ext_autoplayInBackground.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_area.js,browser/components/extensions/test/browser/browser_ext_browserAction_area.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_context.js,browser/components/extensions/test/browser/browser_ext_browserAction_context.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_contextMenu.js,browser/components/extensions/test/browser/browser_ext_browserAction_contextMenu.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_disabled.js,browser/components/extensions/test/browser/browser_ext_browserAction_disabled.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_experiment.js,browser/components/extensions/test/browser/browser_ext_browserAction_experiment.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_incognito.js,browser/components/extensions/test/browser/browser_ext_browserAction_incognito.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_pageAction_icon.js,browser/components/extensions/test/browser/browser_ext_browserAction_pageAction_icon.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_pageAction_icon_permissions.js,browser/components/extensions/test/browser/browser_ext_browserAction_pageAction_icon_permissions.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_popup.js,browser/components/extensions/test/browser/browser_ext_browserAction_popup.js,passes,skipped,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_popup_port.js,browser/components/extensions/test/browser/browser_ext_browserAction_popup_port.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_popup_preload.js,browser/components/extensions/test/browser/browser_ext_browserAction_popup_preload.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_popup_resize.js,browser/components/extensions/test/browser/browser_ext_browserAction_popup_resize.js,passes,skipped,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_popup_resize_bottom.js,browser/components/extensions/test/browser/browser_ext_browserAction_popup_resize_bottom.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_simple.js,browser/components/extensions/test/browser/browser_ext_browserAction_simple.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_telemetry.js,browser/components/extensions/test/browser/browser_ext_browserAction_telemetry.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browserAction_theme_icons.js,browser/components/extensions/test/browser/browser_ext_browserAction_theme_icons.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browsingData_formData.js,browser/components/extensions/test/browser/browser_ext_browsingData_formData.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browsingData_history.js,browser/components/extensions/test/browser/browser_ext_browsingData_history.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browsingData_indexedDB.js,browser/components/extensions/test/browser/browser_ext_browsingData_indexedDB.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browsingData_localStorage.js,browser/components/extensions/test/browser/browser_ext_browsingData_localStorage.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browsingData_pluginData.js,browser/components/extensions/test/browser/browser_ext_browsingData_pluginData.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_browsingData_serviceWorkers.js,browser/components/extensions/test/browser/browser_ext_browsingData_serviceWorkers.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_chrome_settings_overrides_home.js,browser/components/extensions/test/browser/browser_ext_chrome_settings_overrides_home.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_commands_execute_browser_action.js,browser/components/extensions/test/browser/browser_ext_commands_execute_browser_action.js,passes,skipped,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_commands_execute_page_action.js,browser/components/extensions/test/browser/browser_ext_commands_execute_page_action.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_commands_execute_sidebar_action.js,browser/components/extensions/test/browser/browser_ext_commands_execute_sidebar_action.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_commands_getAll.js,browser/components/extensions/test/browser/browser_ext_commands_getAll.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_commands_onCommand.js,browser/components/extensions/test/browser/browser_ext_commands_onCommand.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_commands_update.js,browser/components/extensions/test/browser/browser_ext_commands_update.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_connect_and_move_tabs.js,browser/components/extensions/test/browser/browser_ext_connect_and_move_tabs.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contentscript_animate.js,browser/components/extensions/test/browser/browser_ext_contentscript_animate.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contentscript_connect.js,browser/components/extensions/test/browser/browser_ext_contentscript_connect.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contentscript_nontab_connect.js,browser/components/extensions/test/browser/browser_ext_contentscript_nontab_connect.js,skipped,skipped,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus.js,browser/components/extensions/test/browser/browser_ext_contextMenus.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus_checkboxes.js,browser/components/extensions/test/browser/browser_ext_contextMenus_checkboxes.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus_commands.js,browser/components/extensions/test/browser/browser_ext_contextMenus_commands.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus_icons.js,browser/components/extensions/test/browser/browser_ext_contextMenus_icons.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus_onclick.js,browser/components/extensions/test/browser/browser_ext_contextMenus_onclick.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus_radioGroups.js,browser/components/extensions/test/browser/browser_ext_contextMenus_radioGroups.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus_targetUrlPatterns.js,browser/components/extensions/test/browser/browser_ext_contextMenus_targetUrlPatterns.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus_uninstall.js,browser/components/extensions/test/browser/browser_ext_contextMenus_uninstall.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_contextMenus_urlPatterns.js,browser/components/extensions/test/browser/browser_ext_contextMenus_urlPatterns.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_currentWindow.js,browser/components/extensions/test/browser/browser_ext_currentWindow.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_devtools_network.js,browser/components/extensions/test/browser/browser_ext_devtools_network.js,skipped,skipped,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_find.js,browser/components/extensions/test/browser/browser_ext_find.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_getViews.js,browser/components/extensions/test/browser/browser_ext_getViews.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_history_redirect.js,browser/components/extensions/test/browser/browser_ext_history_redirect.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_identity_indication.js,browser/components/extensions/test/browser/browser_ext_identity_indication.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_incognito_popup.js,browser/components/extensions/test/browser/browser_ext_incognito_popup.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_incognito_views.js,browser/components/extensions/test/browser/browser_ext_incognito_views.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_lastError.js,browser/components/extensions/test/browser/browser_ext_lastError.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_management.js,browser/components/extensions/test/browser/browser_ext_management.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus.js,browser/components/extensions/test/browser/browser_ext_menus.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_accesskey.js,browser/components/extensions/test/browser/browser_ext_menus_accesskey.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_activeTab.js,browser/components/extensions/test/browser/browser_ext_menus_activeTab.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_capture_secondary_click.js,browser/components/extensions/test/browser/browser_ext_menus_capture_secondary_click.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_errors.js,browser/components/extensions/test/browser/browser_ext_menus_errors.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_event_order.js,browser/components/extensions/test/browser/browser_ext_menus_event_order.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_events.js,browser/components/extensions/test/browser/browser_ext_menus_events.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_incognito.js,browser/components/extensions/test/browser/browser_ext_menus_incognito.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_refresh.js,browser/components/extensions/test/browser/browser_ext_menus_refresh.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_replace_menu.js,browser/components/extensions/test/browser/browser_ext_menus_replace_menu.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_replace_menu_context.js,browser/components/extensions/test/browser/browser_ext_menus_replace_menu_context.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_replace_menu_permissions.js,browser/components/extensions/test/browser/browser_ext_menus_replace_menu_permissions.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_targetElement.js,browser/components/extensions/test/browser/browser_ext_menus_targetElement.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_targetElement_extension.js,browser/components/extensions/test/browser/browser_ext_menus_targetElement_extension.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_targetElement_shadow.js,browser/components/extensions/test/browser/browser_ext_menus_targetElement_shadow.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_viewType.js,browser/components/extensions/test/browser/browser_ext_menus_viewType.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_menus_visible.js,browser/components/extensions/test/browser/browser_ext_menus_visible.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_omnibox.js,browser/components/extensions/test/browser/browser_ext_omnibox.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_openPanel.js,browser/components/extensions/test/browser/browser_ext_openPanel.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_optionsPage_browser_style.js,browser/components/extensions/test/browser/browser_ext_optionsPage_browser_style.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_optionsPage_modals.js,browser/components/extensions/test/browser/browser_ext_optionsPage_modals.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_optionsPage_privileges.js,browser/components/extensions/test/browser/browser_ext_optionsPage_privileges.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_pageAction_context.js,browser/components/extensions/test/browser/browser_ext_pageAction_context.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_pageAction_contextMenu.js,browser/components/extensions/test/browser/browser_ext_pageAction_contextMenu.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_pageAction_popup.js,browser/components/extensions/test/browser/browser_ext_pageAction_popup.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_pageAction_popup_resize.js,browser/components/extensions/test/browser/browser_ext_pageAction_popup_resize.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_pageAction_show_matches.js,browser/components/extensions/test/browser/browser_ext_pageAction_show_matches.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_pageAction_simple.js,browser/components/extensions/test/browser/browser_ext_pageAction_simple.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_pageAction_telemetry.js,browser/components/extensions/test/browser/browser_ext_pageAction_telemetry.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_pageAction_title.js,browser/components/extensions/test/browser/browser_ext_pageAction_title.js,passes,skipped,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_popup_api_injection.js,browser/components/extensions/test/browser/browser_ext_popup_api_injection.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_popup_background.js,browser/components/extensions/test/browser/browser_ext_popup_background.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_popup_corners.js,browser/components/extensions/test/browser/browser_ext_popup_corners.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_popup_focus.js,browser/components/extensions/test/browser/browser_ext_popup_focus.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_popup_sendMessage.js,browser/components/extensions/test/browser/browser_ext_popup_sendMessage.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_popup_shutdown.js,browser/components/extensions/test/browser/browser_ext_popup_shutdown.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_port_disconnect_on_crash.js,browser/components/extensions/test/browser/browser_ext_port_disconnect_on_crash.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_port_disconnect_on_window_close.js,browser/components/extensions/test/browser/browser_ext_port_disconnect_on_window_close.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_runtime_openOptionsPage.js,browser/components/extensions/test/browser/browser_ext_runtime_openOptionsPage.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_runtime_openOptionsPage_uninstall.js,browser/components/extensions/test/browser/browser_ext_runtime_openOptionsPage_uninstall.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_runtime_setUninstallURL.js,browser/components/extensions/test/browser/browser_ext_runtime_setUninstallURL.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_search.js,browser/components/extensions/test/browser/browser_ext_search.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_search_favicon.js,browser/components/extensions/test/browser/browser_ext_search_favicon.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_forgetClosedTab.js,browser/components/extensions/test/browser/browser_ext_sessions_forgetClosedTab.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_forgetClosedWindow.js,browser/components/extensions/test/browser/browser_ext_sessions_forgetClosedWindow.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_getRecentlyClosed.js,browser/components/extensions/test/browser/browser_ext_sessions_getRecentlyClosed.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_getRecentlyClosed_private.js,browser/components/extensions/test/browser/browser_ext_sessions_getRecentlyClosed_private.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_getRecentlyClosed_tabs.js,browser/components/extensions/test/browser/browser_ext_sessions_getRecentlyClosed_tabs.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_incognito.js,browser/components/extensions/test/browser/browser_ext_sessions_incognito.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_restore.js,browser/components/extensions/test/browser/browser_ext_sessions_restore.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_restoreTab.js,browser/components/extensions/test/browser/browser_ext_sessions_restoreTab.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sessions_window_tab_value.js,browser/components/extensions/test/browser/browser_ext_sessions_window_tab_value.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_settings_overrides_default_search.js,browser/components/extensions/test/browser/browser_ext_settings_overrides_default_search.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction.js,browser/components/extensions/test/browser/browser_ext_sidebarAction.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction_browser_style.js,browser/components/extensions/test/browser/browser_ext_sidebarAction_browser_style.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction_click.js,browser/components/extensions/test/browser/browser_ext_sidebarAction_click.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction_context.js,browser/components/extensions/test/browser/browser_ext_sidebarAction_context.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction_contextMenu.js,browser/components/extensions/test/browser/browser_ext_sidebarAction_contextMenu.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction_incognito.js,browser/components/extensions/test/browser/browser_ext_sidebarAction_incognito.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction_runtime.js,browser/components/extensions/test/browser/browser_ext_sidebarAction_runtime.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction_tabs.js,browser/components/extensions/test/browser/browser_ext_sidebarAction_tabs.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_sidebarAction_windows.js,browser/components/extensions/test/browser/browser_ext_sidebarAction_windows.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_simple.js,browser/components/extensions/test/browser/browser_ext_simple.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_slow_script.js,browser/components/extensions/test/browser/browser_ext_slow_script.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tab_runtimeConnect.js,browser/components/extensions/test/browser/browser_ext_tab_runtimeConnect.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_attention.js,browser/components/extensions/test/browser/browser_ext_tabs_attention.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_audio.js,browser/components/extensions/test/browser/browser_ext_tabs_audio.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_captureTab.js,browser/components/extensions/test/browser/browser_ext_tabs_captureTab.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_captureVisibleTab.js,browser/components/extensions/test/browser/browser_ext_tabs_captureVisibleTab.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_cookieStoreId.js,browser/components/extensions/test/browser/browser_ext_tabs_cookieStoreId.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_create.js,browser/components/extensions/test/browser/browser_ext_tabs_create.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_create_invalid_url.js,browser/components/extensions/test/browser/browser_ext_tabs_create_invalid_url.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_create_url.js,browser/components/extensions/test/browser/browser_ext_tabs_create_url.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_detectLanguage.js,browser/components/extensions/test/browser/browser_ext_tabs_detectLanguage.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_discard.js,browser/components/extensions/test/browser/browser_ext_tabs_discard.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_discarded.js,browser/components/extensions/test/browser/browser_ext_tabs_discarded.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_duplicate.js,browser/components/extensions/test/browser/browser_ext_tabs_duplicate.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_events.js,browser/components/extensions/test/browser/browser_ext_tabs_events.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_events_order.js,browser/components/extensions/test/browser/browser_ext_tabs_events_order.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_executeScript.js,browser/components/extensions/test/browser/browser_ext_tabs_executeScript.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_bad.js,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_bad.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_good.js,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_good.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_multiple.js,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_multiple.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_no_create.js,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_no_create.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_runAt.js,browser/components/extensions/test/browser/browser_ext_tabs_executeScript_runAt.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_getCurrent.js,browser/components/extensions/test/browser/browser_ext_tabs_getCurrent.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_hide.js,browser/components/extensions/test/browser/browser_ext_tabs_hide.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_hide_update.js,browser/components/extensions/test/browser/browser_ext_tabs_hide_update.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_highlight.js,browser/components/extensions/test/browser/browser_ext_tabs_highlight.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_incognito_not_allowed.js,browser/components/extensions/test/browser/browser_ext_tabs_incognito_not_allowed.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_insertCSS.js,browser/components/extensions/test/browser/browser_ext_tabs_insertCSS.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_lastAccessed.js,browser/components/extensions/test/browser/browser_ext_tabs_lastAccessed.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_lazy.js,browser/components/extensions/test/browser/browser_ext_tabs_lazy.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_move_array.js,browser/components/extensions/test/browser/browser_ext_tabs_move_array.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_move_discarded.js,browser/components/extensions/test/browser/browser_ext_tabs_move_discarded.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_move_window.js,browser/components/extensions/test/browser/browser_ext_tabs_move_window.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_move_window_multiple.js,browser/components/extensions/test/browser/browser_ext_tabs_move_window_multiple.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_move_window_pinned.js,browser/components/extensions/test/browser/browser_ext_tabs_move_window_pinned.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_onCreated.js,browser/components/extensions/test/browser/browser_ext_tabs_onCreated.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_onHighlighted.js,browser/components/extensions/test/browser/browser_ext_tabs_onHighlighted.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_onUpdated.js,browser/components/extensions/test/browser/browser_ext_tabs_onUpdated.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_onUpdated_filter.js,browser/components/extensions/test/browser/browser_ext_tabs_onUpdated_filter.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_opener.js,browser/components/extensions/test/browser/browser_ext_tabs_opener.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_printPreview.js,browser/components/extensions/test/browser/browser_ext_tabs_printPreview.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_query.js,browser/components/extensions/test/browser/browser_ext_tabs_query.js,passes,passes,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_readerMode.js,browser/components/extensions/test/browser/browser_ext_tabs_readerMode.js,skipped,skipped,jimm,zombie,M4,
+,,browser/components/extensions/test/browser/browser_ext_tabs_reload.js,browser/components/extensions/test/browser/browser_ext_tabs_reload.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_reload_bypass_cache.js,browser/components/extensions/test/browser/browser_ext_tabs_reload_bypass_cache.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_removeCSS.js,browser/components/extensions/test/browser/browser_ext_tabs_removeCSS.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_saveAsPDF.js,browser/components/extensions/test/browser/browser_ext_tabs_saveAsPDF.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_sendMessage.js,browser/components/extensions/test/browser/browser_ext_tabs_sendMessage.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_sharingState.js,browser/components/extensions/test/browser/browser_ext_tabs_sharingState.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_successors.js,browser/components/extensions/test/browser/browser_ext_tabs_successors.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_update.js,browser/components/extensions/test/browser/browser_ext_tabs_update.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_update_highlighted.js,browser/components/extensions/test/browser/browser_ext_tabs_update_highlighted.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_update_url.js,browser/components/extensions/test/browser/browser_ext_tabs_update_url.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_tabs_zoom.js,browser/components/extensions/test/browser/browser_ext_tabs_zoom.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_themes_validation.js,browser/components/extensions/test/browser/browser_ext_themes_validation.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_topSites.js,browser/components/extensions/test/browser/browser_ext_topSites.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_url_overrides_newtab.js,browser/components/extensions/test/browser/browser_ext_url_overrides_newtab.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_urlbar_contextual_tip.js,browser/components/extensions/test/browser/browser_ext_urlbar_contextual_tip.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_user_events.js,browser/components/extensions/test/browser/browser_ext_user_events.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webNavigation_frameId0.js,browser/components/extensions/test/browser/browser_ext_webNavigation_frameId0.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webNavigation_getFrames.js,browser/components/extensions/test/browser/browser_ext_webNavigation_getFrames.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget.js,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget_contextmenu.js,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget_contextmenu.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget_named_window.js,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget_named_window.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget_subframe_window_open.js,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget_subframe_window_open.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget_window_open.js,browser/components/extensions/test/browser/browser_ext_webNavigation_onCreatedNavigationTarget_window_open.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webNavigation_urlbar_transitions.js,browser/components/extensions/test/browser/browser_ext_webNavigation_urlbar_transitions.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_webRequest.js,browser/components/extensions/test/browser/browser_ext_webRequest.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows.js,browser/components/extensions/test/browser/browser_ext_windows.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_create.js,browser/components/extensions/test/browser/browser_ext_windows_create.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_create_cookieStoreId.js,browser/components/extensions/test/browser/browser_ext_windows_create_cookieStoreId.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_create_params.js,browser/components/extensions/test/browser/browser_ext_windows_create_params.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_create_tabId.js,browser/components/extensions/test/browser/browser_ext_windows_create_tabId.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_create_url.js,browser/components/extensions/test/browser/browser_ext_windows_create_url.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_events.js,browser/components/extensions/test/browser/browser_ext_windows_events.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_incognito.js,browser/components/extensions/test/browser/browser_ext_windows_incognito.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_remove.js,browser/components/extensions/test/browser/browser_ext_windows_remove.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_size.js,browser/components/extensions/test/browser/browser_ext_windows_size.js,passes,passes,,,,
+,,browser/components/extensions/test/browser/browser_ext_windows_update.js,browser/components/extensions/test/browser/browser_ext_windows_update.js,passes,passes,,,,
