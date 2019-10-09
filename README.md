@@ -80,5 +80,5 @@ ls | xargs gunzip
 14. Gather a list of `.ini` files that were modified while adding annotations
 `git diff --name-only --stat -U1 <commit before you added the skips> <latest commit on the branch that has all your skips>  -- '*.ini'   > ini_files_changed_skips`
 
-15. Gather a list of test files that were skipped by us in an test suite that has other failing tests. Add back annotations for those (manually).
+15. Gather a list of test files that were skipped by us in an test suite that has other failing tests. This script does not produce a list of tests to uncomment but I guess I could modify it to do so.
 `python3 cross_search_tests.py tests_run_or_skipped_try_job ini_files_changed_skips [repo]`
