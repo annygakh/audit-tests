@@ -1,5 +1,5 @@
 ## Get pathnames of all tests that are currently being skipped
-1. Download fission.csv (the mochitest spreadsheet)
+1. Download [fission.csv](https://docs.google.com/spreadsheets/d/1kjp32JTuB4axM3wKx0iIYL2Ado-HcyeBhoY-siGxYAs/edit#gid=1560718888)
 2. Extract a list of skipped tests for either 'opt' or 'debug'
 `python3 get_skipped_tests.py fission.csv opt skipped_opt`
 - pipe the above through `grep` filters to remove tests that we are not working on currently, e.g. 'remote' or 'devtools'
