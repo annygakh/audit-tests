@@ -56,7 +56,8 @@ do
 done
 ```
 - `in logs directory` Gunzip all of the logs so they are plain text
-ls | xargs gunzip
+
+`ls | xargs gunzip`
 - Now we need to grep the logs for "TEST-UNEXPECTED-FAIL" and get filenames of tests
 `rg "TEST-UNEXPECTED-FAIL" --no-filename | cut -f 2 -d "|" | cut -d ' ' -f 2 | sort -u > unexpected_fail`
 7. Append unexpected_fail to a previous version if you already run step 6 before.
