@@ -1,85 +1,58 @@
-## Get pathnames of all tests that are currently being skipped
-1. Download [fission.csv](https://docs.google.com/spreadsheets/d/1kjp32JTuB4axM3wKx0iIYL2Ado-HcyeBhoY-siGxYAs/edit#gid=1560718888)
-2. Extract a list of skipped tests for either 'opt' or 'debug'
-`python3 get_skipped_tests.py fission.csv opt skipped_opt`
-- pipe the above through `grep` filters to remove tests that we are not working on currently, e.g. 'remote' or 'devtools'
+## audit-tests
 
-## Identify which tests have a clean shutdown locally
-3. On a machine, run this script overnight, unskipping each test individually and seeing if there is a clean shutdown
-`./unskip_individually.sh skipped_opt [code directory]`
-- this will produce test files 'clean_tests' and 'failed_tests'
-- 'clean_tests' - pathnames of tests with clean shutdown
-- 'failed_tests' - problems with shutdown
+Scripts to audit skipped tests for Fission.
 
-## Unskip all tests from clean_tests and push to try for the first time
-4. Unskip all tests
-`cat clean_tests | xargs -L 1 -I F ./unskip.sh "F" [code directory]`
-- this will change `fission` keyword to `false` in `.ini` files for each test in 'clean_tests'
-5. Push to try for the first time
+#### Unskip tests locally
 
-## Inspect try failures and add annotations back for failing tests
-6. Get names of tests with unexpected failures from Task Cluster
-- Run the following in javascript console after selecting `tbody` to `use in console`
+1. Download the "fission-tests-status" sheet as a csv from [here](https://docs.google.com/spreadsheets/d/1kjp32JTuB4axM3wKx0iIYL2Ado-HcyeBhoY-siGxYAs/edit#gid=2031736766).
+1. Run `get_skipped_tests.py` with that csv as input. The 2nd argument will filter skipped tests based on their build.
+
+    ```console
+    $ ./get_skipped_tests.py fission-tests-status.csv [opt|debug]
+    ```
+
+    This will print a list of skipped tests to stdout.
+1. Use `unskip.sh` to unskip tests locally.
+
+    ```console
+    $ cat skipped-tests | xargs -n1 -I{} ./unskip.sh {} /path/to/mozilla-central
+    ```
+
+1. You can use `run-tests.sh` to run the tests locally to confirm that they're actually passing. This step will take time and is mostly optional. It may avoid running unnecessary tests on try.
+
+    ```console
+    $ ./run-tests.sh skipped-tests /path/to/mozilla-central
+    ```
+
+1. If you ran the tests locally, you should now have 2 new files: `pass` and `fail`. Tests in the `fail` file are still failing locally, so they shouldn't be unskipped. Use `reskip.sh` to update their annotations.
+
+    ```console
+    $ cat fail | xargs -n1 -I{} ./reskip.sh {} /path/to/mozilla-central
+    ```
+
+#### Push to try
+
+1. Commit the changes.
+
+    ```console
+    $ cd /path/to/mozilla-central
+    $ hg commit -m "Unskip fission tests" -m "$(cat /path/to/skipped-tests)"
+    ```
+
+1. Push to try. There's many ways to do this. The following runs the unskipped tests 3 times on an artifact build. When the fuzzy chooser shows up, filter on `"-fis-"` and select all jobs.
+
+    ```console
+    $ cat /path/to/skipped-tests | xargs mach try fuzzy --rebuild 3 --artifact
+    ```
+
+#### Analyze try results
+
+The try push will take _some_ time. After it's done you can use the scripts in `analyze/` to fetch and parse test logs.
+
+```console
+$ cd analyze/
+$ ./fetch_logs.py 'https://treeherder.mozilla.org/#/jobs?repo=try&revision=$REVISION' logs/
+$ ./check_logs.py logs/*.log
 ```
-var childs = temp1.children;
-for (var i = 0; i < childs.length; i++) {
-  if (childs[i].children[0].textContent != "failed") continue;
-  var task_links = childs[i].children[1].children[0].href;
-  console.log(task_links);
-}
-```
 
-- Download the output into file and delete extra text (vim magic - will write a script later). Now we have task links - `task_links.txt`
-```
-https://tools.taskcluster.net/groups/ZGpoarrNTlC2AnNoz-z-Iw/tasks/EZis_ClyRZi_ufUQDJM7CA/details
-...
-https://tools.taskcluster.net/groups/ZGpoarrNTlC2AnNoz-z-Iw/tasks/RzJyaS17R_a45bPu5E6SoA/details
-```
-
-- Construct raw log links from task links (vim magic - will write a script later) - `log_links.txt`
-```
-https://taskcluster-artifacts.net/EZis_ClyRZi_ufUQDJM7CA/0/public/logs/live_backing.log
-...
-https://taskcluster-artifacts.net/RzJyaS17R_a45bPu5E6SoA/0/public/logs/live_backing.log
-```
-
-- Download all the raw logs into a folder
-```
-mkdir logs && cd logs
-cat log_links.txt | xargs -K 1 wget
-```
-- `in logs directory` Convert log files to have `gz` extension so we can gunzip them
-```
-for file in *.log
-do
-  mv "$file" "$(basename "$file" .log).gz"
-done
-```
-- `in logs directory` Gunzip all of the logs so they are plain text
-
-`ls | xargs gunzip`
-- Now we need to grep the logs for "TEST-UNEXPECTED-FAIL" and get filenames of tests
-`rg "TEST-UNEXPECTED-FAIL" --no-filename | cut -f 2 -d "|" | cut -d ' ' -f 2 | sort -u > unexpected_fail`
-7. Append unexpected_fail to a previous version if you already run step 6 before.
-8. Now add back all skip annotations (i.e. undoing all your earlier changes) and only unskip those that are not in `unexpected_fail`
-
-  `cat clean_tests | xargs -L 1 -I F ./unskip.sh "F" [code directory] unexpected_fail`
-
-9. Push to try
-
-10. Repeat steps 6-9 until your unexpected_fail test stops changing
-
-## Identify tests that are not failing but causing other tests to fail
-
-11. At some point you might have test failures that are a side effect from other tests that were running in the test suite. This will need to be dealt with manually. Repeat steps 12-15 for every try job where you have failures.
-
-12. Download raw logs for the try job
-
-13. Extract a list of test pathnames that were run/skipped in a specific try running
-`grep "TEST-START" logs.log | cut -f 12 -d ' ' | sort -u > tests_run_or_skipped_try_job`
-
-14. Gather a list of `.ini` files that were modified while adding annotations
-`git diff --name-only --stat -U1 <commit before you added the skips> <latest commit on the branch that has all your skips>  -- '*.ini'   > ini_files_changed_skips`
-
-15. Gather a list of test files that were skipped by us in an test suite that has other failing tests. This script does not produce a list of tests to uncomment but I guess I could modify it to do so.
-`python3 cross_search_tests.py tests_run_or_skipped_try_job ini_files_changed_skips [repo]`
+This will print tests that failed or timed out. You can manually go through this list and run `reskip.sh` to re-add the skip annotation for tests that are still failing. You should now have a list of tests that are no longer failing and can be unskipped permanantely. You'll need to manually go through this list and remove the "skip-if = false" annotations. There's generally not that many tests to update at this point, so it shouldn't take long, but scripts to automate this would be nice.
