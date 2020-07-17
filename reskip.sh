@@ -20,15 +20,15 @@ for NAME in "browser.ini" "mochitest.ini"; do
 
   LINE=$(
     rg -A10 --no-filename --line-number -e $TESTFILE $INIFILE |
-    grep -m1 fission |
+    grep -m1 false |
     cut -d: -f1 |
     cut -d- -f1
   )
 
-  echo -n "Unskipping $FNAME... "
+  echo -n "Reskipping $FNAME... "
 
   if [ ! -z $LINE ]; then
-    sed -e "${LINE}s/fission/false/" -i $INIFILE
+    sed -e "${LINE}s/false/fission/" -i $INIFILE
     echo "done"
   else
     echo "already done"
